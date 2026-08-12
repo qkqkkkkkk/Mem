@@ -16,6 +16,32 @@ pip install -r requirements.txt
 
 Copy `.env.example` to `.env` and set `OPENAI_API_KEY` to use live OpenAI calls. The debug pipeline also runs without a key by using deterministic local fallbacks.
 
+### Local Ollama / Qwen
+
+You can run CMI without an OpenAI key using Ollama. Install Ollama, start the
+server, and pull a Qwen model:
+
+```bash
+ollama serve
+ollama pull qwen2.5:latest
+ollama pull nomic-embed-text  # optional; retrieval has a deterministic fallback
+```
+
+Then run CMI with the local configuration:
+
+```bash
+python scripts/03_run_all_experiments.py \
+  --config config/local_ollama.yaml \
+  --dataset data/generated/live_pilot_20.jsonl \
+  --max_examples 5 \
+  --agents cmi
+```
+
+`config/local_ollama.yaml` uses `qwen2.5:latest` for answer generation and judging,
+and `nomic-embed-text` for retrieval. Change `openai.agent_model` there to any
+model available in `ollama list`, such as `qwen3:8b`. Ollama calls are handled by
+the built-in local provider at `http://127.0.0.1:11434` and are not billed.
+
 ## Quick Start
 
 ```bash

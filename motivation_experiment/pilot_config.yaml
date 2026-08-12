@@ -1,0 +1,25 @@
+# A deliberately small, deterministic configuration for the motivation pilot.
+seed: 42
+openai:
+  agent_model: gpt-4o-mini
+  embedding_model: text-embedding-3-small
+  temperature: 0.0
+  max_output_tokens: 300
+  use_api: false
+retrieval:
+  top_k: 5
+  hybrid:
+    alpha: 0.7
+    beta: 0.2
+    gamma: 0.1
+cmi:
+  use_perturbation: true
+  perturbation_types:
+    - negation
+    - scope_shift
+    - temporal_shift
+    - entity_swap
+experiment:
+  deterministic_only: true
+  skip_llm_judge: true
+

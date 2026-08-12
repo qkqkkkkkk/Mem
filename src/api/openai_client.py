@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 import os
 import time
+import urllib.error
+import urllib.request
 from typing import Any
 
 try:
@@ -33,6 +35,9 @@ DEFAULT_PRICING_PER_1M = {
     "gpt-4o-mini-2024-07-18": {"input": 0.15, "output": 0.60},
     "text-embedding-3-small": {"input": 0.02, "output": 0.0},
     "text-embedding-3-large": {"input": 0.13, "output": 0.0},
+    "qwen2.5:7b": {"input": 0.0, "output": 0.0},
+    "qwen3:8b": {"input": 0.0, "output": 0.0},
+    "nomic-embed-text": {"input": 0.0, "output": 0.0},
 }
 
 
@@ -52,20 +57,30 @@ class OpenAIClient:
         cache_dir: str | None = None,
         use_cache: bool = True,
         use_api: bool | None = None,
+        provider: str | None = None,
+        base_url: str | None = None,
         pricing: dict[str, dict[str, float]] | None = None,
         rate_limit_seconds: float = 0.0,
     ):
         if load_dotenv is not None:
             load_dotenv()
         self.api_key = os.getenv("OPENAI_API_KEY")
-        self.base_url = os.getenv("OPENAI_API_URL") or os.getenv("OPENAI_BASE_URL")
-        self.use_api = bool(self.api_key) if use_api is None else bool(use_api and self.api_key)
+        self.provider = (provider or os.getenv("LLM_PROVIDER") or "openai").lower()
+        configured_url = base_url or os.getenv("OPENAI_API_URL") or os.getenv("OPENAI_BASE_URL")
+        if self.provider == "ollama":
+            configured_url = configured_url or os.getenv("OLLAMA_HOST") or "http://127.0.0.1:11434"
+            configured_url = configured_url.rstrip("/")
+        self.base_url = configured_url
+        if self.provider == "ollama":
+            self.use_api = True if use_api is None else bool(use_api)
+        else:
+            self.use_api = bool(self.api_key) if use_api is None else bool(use_api and self.api_key)
         self.cache = JsonCache(cache_dir or os.getenv("CACHE_DIR", ".cache/openai"), enabled=use_cache)
         self.pricing = pricing or DEFAULT_PRICING_PER_1M
         self.rate_limiter = RateLimiter(rate_limit_seconds)
         self._client = None
 
-        if self.use_api:
+        if self.use_api and self.provider != "ollama":
             try:
                 from openai import OpenAI
 
@@ -103,7 +118,9 @@ class OpenAIClient:
             return cached
 
         started = time.time()
-        if self.use_api and self._client is not None:
+        if self.use_api and self.provider == "ollama":
+            result = self._complete_ollama(payload)
+        elif self.use_api and self._client is not None:
             result = self._complete_api(payload)
         else:
             result = self._complete_local(prompt, model, json_mode=json_mode)
@@ -139,6 +156,54 @@ class OpenAIClient:
             "json": parse_json_object(text) if payload.get("json_mode") else None,
             "usage": usage,
             "estimated_cost_usd": self.estimate_cost(payload["model"], usage),
+            "model": payload["model"],
+        }
+
+    def _ollama_request(self, path: str, body: dict[str, Any]) -> dict[str, Any]:
+        """Call Ollama's local HTTP API without requiring the OpenAI SDK."""
+        request = urllib.request.Request(
+            f"{self.base_url}{path}",
+            data=json.dumps(body).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=300) as response:
+                return json.loads(response.read().decode("utf-8"))
+        except urllib.error.URLError as exc:
+            raise RuntimeError(
+                f"Could not reach Ollama at {self.base_url}. Start it with `ollama serve` "
+                f"and pull the configured model. Original error: {exc}"
+            ) from exc
+
+    @_retry_decorator()
+    def _complete_ollama(self, payload: dict[str, Any]) -> dict[str, Any]:
+        messages = []
+        if payload.get("system"):
+            messages.append({"role": "system", "content": payload["system"]})
+        messages.append({"role": "user", "content": payload["prompt"]})
+        body = {
+            "model": payload["model"],
+            "messages": messages,
+            "stream": False,
+            "options": {"temperature": payload["temperature"]},
+        }
+        if payload.get("max_output_tokens"):
+            body["options"]["num_predict"] = payload["max_output_tokens"]
+        if payload.get("json_mode"):
+            body["format"] = "json"
+        response = self._ollama_request("/api/chat", body)
+        text = ((response.get("message") or {}).get("content") or "").strip()
+        usage = {
+            "input_tokens": int(response.get("prompt_eval_count", 0) or 0),
+            "output_tokens": int(response.get("eval_count", 0) or 0),
+            "total_tokens": int(response.get("prompt_eval_count", 0) or 0) + int(response.get("eval_count", 0) or 0),
+        }
+        return {
+            "text": text,
+            "json": parse_json_object(text) if payload.get("json_mode") else None,
+            "usage": usage,
+            "estimated_cost_usd": 0.0,
             "model": payload["model"],
         }
 
@@ -183,7 +248,13 @@ class OpenAIClient:
         cached = self.cache.get(payload)
         if cached is not None:
             return cached["embeddings"]
-        if self.use_api and self._client is not None:
+        if self.use_api and self.provider == "ollama":
+            try:
+                embeddings = self._embed_ollama(texts, model)
+            except Exception:
+                # Chat-only Ollama installs often do not include an embedding model.
+                embeddings = [deterministic_embedding(text) for text in texts]
+        elif self.use_api and self._client is not None:
             embeddings = self._embed_api(texts, model)
         else:
             embeddings = [deterministic_embedding(text) for text in texts]
@@ -195,6 +266,14 @@ class OpenAIClient:
         self.rate_limiter.wait()
         response = self._client.embeddings.create(model=model, input=texts)
         return [item.embedding for item in response.data]
+
+    @_retry_decorator()
+    def _embed_ollama(self, texts: list[str], model: str) -> list[list[float]]:
+        response = self._ollama_request("/api/embed", {"model": model, "input": texts})
+        embeddings = response.get("embeddings")
+        if not embeddings:
+            raise RuntimeError(f"Ollama returned no embeddings for model {model!r}")
+        return embeddings
 
     def estimate_cost(self, model: str, usage: dict[str, int]) -> float:
         prices = self.pricing.get(model, {"input": 0.0, "output": 0.0})

@@ -100,6 +100,8 @@ def run_experiment(
     client = OpenAIClient(
         use_cache=use_cache,
         use_api=bool(config.get("openai", {}).get("use_api", False)),
+        provider=config.get("openai", {}).get("provider"),
+        base_url=config.get("openai", {}).get("base_url") or config.get("openai", {}).get("api_url"),
         cache_dir=".cache/openai",
     )
     examples = load_examples(dataset_path, max_examples=max_examples)

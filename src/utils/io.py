@@ -81,6 +81,8 @@ def load_config(path: str | Path = "config/default.yaml") -> dict[str, Any]:
         "OPENAI_EMBEDDING_MODEL": ("openai", "embedding_model"),
         "OPENAI_API_URL": ("openai", "api_url"),
         "OPENAI_BASE_URL": ("openai", "api_url"),
+        "LLM_PROVIDER": ("openai", "provider"),
+        "OLLAMA_HOST": ("openai", "base_url"),
     }
     for env_name, (section, key) in env_overrides.items():
         value = os.getenv(env_name)
