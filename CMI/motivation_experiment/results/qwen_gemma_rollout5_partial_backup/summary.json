@@ -1,0 +1,407 @@
+{
+  "n_interventions": 30,
+  "n_examples": 10,
+  "thresholds": {
+    "top_relevance_quantile": 0.8,
+    "top_relevance_cutoff": 0.8036580760000002,
+    "relevance_metric": "embedding",
+    "high_B_quantile": 0.8,
+    "high_B_cutoff": 1.0,
+    "low_B_cutoff": 1.0,
+    "B_bands_separated": false,
+    "utility_epsilon": 0.0
+  },
+  "overall": {
+    "mean_R": 0.6621199246666667,
+    "mean_embedding_R": 0.6621199246666667,
+    "mean_hybrid_R": 0.6555693136666666,
+    "mean_B": 0.9466666666666667,
+    "behavior_metric": "llm_decision",
+    "utility_scorer": "hybrid",
+    "mean_U": 0.35255555555555557,
+    "negative_U_rate": {
+      "estimate": 0.1,
+      "lower": 0.0,
+      "upper": 0.20083333333332878,
+      "n": 30
+    },
+    "neutral_U_rate": {
+      "estimate": 0.1,
+      "lower": 0.0,
+      "upper": 0.23333333333333334,
+      "n": 30
+    },
+    "behavior_changed_rate": {
+      "estimate": 0.9666666666666667,
+      "lower": 0.9,
+      "upper": 1.0,
+      "n": 30
+    },
+    "rollout_uncertainty": {
+      "n_with_estimable_ci": 30,
+      "n_negative_with_95ci": 2,
+      "minimum_rollouts_for_claim": 3
+    }
+  },
+  "correlations": {
+    "pearson_B_U": {
+      "estimate": -0.23247651582489953,
+      "lower": -0.4160012115838248,
+      "upper": 0.006998524037251894,
+      "n": 30,
+      "n_clusters": 10,
+      "method": "question_cluster_bootstrap"
+    },
+    "spearman_B_U": {
+      "estimate": -0.12151011024052918,
+      "lower": -0.3591552298516049,
+      "upper": 0.09695356516975201,
+      "n": 30,
+      "n_clusters": 10,
+      "method": "question_cluster_bootstrap"
+    },
+    "pearson_R_U": {
+      "estimate": 0.025155977869817416,
+      "lower": -0.22678200530634451,
+      "upper": 0.33203649244653866,
+      "n": 30,
+      "n_clusters": 10,
+      "method": "question_cluster_bootstrap"
+    },
+    "pearson_embedding_R_U": {
+      "estimate": 0.025155977869817416,
+      "lower": -0.22922031418606453,
+      "upper": 0.3359308901437837,
+      "n": 30,
+      "n_clusters": 10,
+      "method": "question_cluster_bootstrap"
+    },
+    "pearson_hybrid_R_U": {
+      "estimate": -0.2636528525796161,
+      "lower": -0.5106071059231325,
+      "upper": 0.027369219979556367,
+      "n": 30,
+      "n_clusters": 10,
+      "method": "question_cluster_bootstrap"
+    }
+  },
+  "naive_correlations": {
+    "pearson_B_U": {
+      "estimate": -0.23247651582489953,
+      "lower": -0.4490472781860299,
+      "upper": 0.1446508416853647,
+      "n": 30
+    },
+    "spearman_B_U": {
+      "estimate": -0.12151011024052918,
+      "lower": -0.3875032850304369,
+      "upper": 0.15751017700564157,
+      "n": 30
+    },
+    "pearson_R_U": {
+      "estimate": 0.025155977869817416,
+      "lower": -0.33990108540859376,
+      "upper": 0.42406561080403044,
+      "n": 30
+    },
+    "pearson_embedding_R_U": {
+      "estimate": 0.025155977869817416,
+      "lower": -0.3402959371923321,
+      "upper": 0.4352327798054346,
+      "n": 30
+    },
+    "pearson_hybrid_R_U": {
+      "estimate": -0.2636528525796161,
+      "lower": -0.5515987151626849,
+      "upper": 0.13806084732103643,
+      "n": 30
+    }
+  },
+  "within_label_correlations": {
+    "harmful": {
+      "estimate": -0.3291138177866147,
+      "lower": -0.895692292758019,
+      "upper": 0.7304751866965334,
+      "n": 7,
+      "n_clusters": 7,
+      "method": "question_cluster_bootstrap"
+    },
+    "irrelevant": {
+      "estimate": 0.05010135530904826,
+      "lower": -0.41131311287609446,
+      "upper": 0.6046849041014258,
+      "n": 15,
+      "n_clusters": 10,
+      "method": "question_cluster_bootstrap"
+    },
+    "useful": {
+      "estimate": 0.12143250932992515,
+      "lower": -0.5520056212448133,
+      "upper": 0.8370496005927966,
+      "n": 8,
+      "n_clusters": 8,
+      "method": "question_cluster_bootstrap"
+    }
+  },
+  "utility_sign_prediction": {
+    "task": "positive_vs_negative_utility_excluding_neutral",
+    "neutral_definition": "abs(U) <= 0.0",
+    "n": 27,
+    "n_excluded_neutral": 3,
+    "n_clusters": 10,
+    "positive_rate": 0.8888888888888888,
+    "average_precision_baseline": 0.8888888888888888,
+    "models": {
+      "R": {
+        "features": [
+          "relevance_score"
+        ],
+        "cv": "leave_one_question_out",
+        "n_oof": 27,
+        "skipped_folds": 0,
+        "roc_auc": {
+          "estimate": 0.8194444444444444,
+          "lower": 0.6,
+          "upper": 0.996874999999999,
+          "n": 27,
+          "n_clusters": 10,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "average_precision": {
+          "estimate": 0.9756446374403029,
+          "lower": 0.9400159561299267,
+          "upper": 0.9999999999999999,
+          "n": 27,
+          "n_clusters": 10,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "precision_at_0_5": 0.9444444444444444,
+        "recall_at_0_5": 0.7083333333333334,
+        "f1_at_0_5": 0.8095238095238095
+      },
+      "B": {
+        "features": [
+          "behavioral_reliance"
+        ],
+        "cv": "leave_one_question_out",
+        "n_oof": 27,
+        "skipped_folds": 0,
+        "roc_auc": {
+          "estimate": 0.3819444444444444,
+          "lower": 0.13169258373205742,
+          "upper": 0.6466666666666667,
+          "n": 27,
+          "n_clusters": 10,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "average_precision": {
+          "estimate": 0.8944165337586389,
+          "lower": 0.7248633641490785,
+          "upper": 0.9744073145827532,
+          "n": 27,
+          "n_clusters": 10,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "precision_at_0_5": 1.0,
+        "recall_at_0_5": 0.16666666666666666,
+        "f1_at_0_5": 0.2857142857142857
+      },
+      "R_plus_B": {
+        "features": [
+          "relevance_score",
+          "behavioral_reliance"
+        ],
+        "cv": "leave_one_question_out",
+        "n_oof": 27,
+        "skipped_folds": 0,
+        "roc_auc": {
+          "estimate": 0.8194444444444444,
+          "lower": 0.6,
+          "upper": 1.0,
+          "n": 27,
+          "n_clusters": 10,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "average_precision": {
+          "estimate": 0.9756446374403029,
+          "lower": 0.939085164057275,
+          "upper": 1.0,
+          "n": 27,
+          "n_clusters": 10,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "precision_at_0_5": 0.9411764705882353,
+        "recall_at_0_5": 0.6666666666666666,
+        "f1_at_0_5": 0.7804878048780488
+      }
+    }
+  },
+  "h1_top_relevance_negative_U": {
+    "estimate": 0.3333333333333333,
+    "lower": 0.0,
+    "upper": 0.6666666666666666,
+    "n": 6
+  },
+  "labels": {
+    "harmful": {
+      "n": 7,
+      "mean_relevance": 0.8255160899999999,
+      "mean_embedding_relevance": 0.8255160899999999,
+      "mean_hybrid_relevance": 0.8744612757142857,
+      "mean_B": 0.9857142857142858,
+      "mean_U": 0.12452380952380951,
+      "negative_U_rate": {
+        "estimate": 0.42857142857142855,
+        "lower": 0.14285714285714285,
+        "upper": 0.8571428571428571,
+        "n": 7
+      },
+      "neutral_U_rate": {
+        "estimate": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "n": 7
+      }
+    },
+    "irrelevant": {
+      "n": 15,
+      "mean_relevance": 0.5452151286666667,
+      "mean_embedding_relevance": 0.5452151286666667,
+      "mean_hybrid_relevance": 0.563743592,
+      "mean_B": 0.9866666666666667,
+      "mean_U": 0.2846666666666667,
+      "negative_U_rate": {
+        "estimate": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "n": 15
+      },
+      "neutral_U_rate": {
+        "estimate": 0.2,
+        "lower": 0.0,
+        "upper": 0.4,
+        "n": 15
+      }
+    },
+    "useful": {
+      "n": 8,
+      "mean_relevance": 0.7383447725000001,
+      "mean_embedding_relevance": 0.7383447725000001,
+      "mean_hybrid_relevance": 0.636212075,
+      "mean_B": 0.8375,
+      "mean_U": 0.679375,
+      "negative_U_rate": {
+        "estimate": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "n": 8
+      },
+      "neutral_U_rate": {
+        "estimate": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "n": 8
+      }
+    }
+  },
+  "quadrants": {
+    "high_B_positive_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    },
+    "high_B_negative_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    },
+    "low_B_positive_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    },
+    "low_B_negative_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    }
+  },
+  "retrieved_candidate_composition": {
+    "useful_candidate_rate": {
+      "count": 8,
+      "denominator": 30,
+      "rate": 0.26666666666666666
+    },
+    "harmful_candidate_rate": {
+      "count": 7,
+      "denominator": 30,
+      "rate": 0.23333333333333334
+    }
+  },
+  "run": {
+    "dataset": "causal_locomo_final.jsonl",
+    "config": "config/local_ollama_independent_judge.yaml",
+    "provider": "ollama",
+    "agent_model": "qwen2.5:7b",
+    "judge_model": "llama3:8b",
+    "judge_independent_from_agent": true,
+    "embedding_model": "nomic-embed-text",
+    "embedding_backend": "ollama",
+    "retrieval_metric": "hybrid",
+    "relevance_metric": "embedding",
+    "utility_scorer": "hybrid",
+    "behavior_scorer": "llm_decision",
+    "deterministic_only": false,
+    "rollouts": 5,
+    "generation_temperature": 0.3,
+    "invalid_judge_count": 0,
+    "top_k": 3,
+    "skipped_examples": [
+      {
+        "example_id": "conv-26_qa_0000",
+        "error": "Invalid judge output for conv-26_qa_0000/irr_02: ['same_decision=true conflicts with a nonzero decision_change_score']"
+      },
+      {
+        "example_id": "conv-41_qa_0000",
+        "error": "Invalid judge output for conv-41_qa_0000/harm_00: ['same_decision=true conflicts with a nonzero decision_change_score']"
+      },
+      {
+        "example_id": "conv-50_qa_0000",
+        "error": "Invalid judge output for conv-50_qa_0000/harm_00: ['same_decision=true conflicts with a nonzero decision_change_score']"
+      },
+      {
+        "example_id": "conv-41_qa_0001",
+        "error": "Invalid judge output for conv-41_qa_0001/irr_02: ['same_decision=true conflicts with a nonzero decision_change_score']"
+      },
+      {
+        "example_id": "conv-42_qa_0001",
+        "error": "Invalid judge output for conv-42_qa_0001/harm_00: ['same_decision=true conflicts with a nonzero decision_change_score']"
+      },
+      {
+        "example_id": "conv-43_qa_0001",
+        "error": "Invalid judge output for conv-43_qa_0001/irr_03: ['same_decision=true conflicts with a nonzero decision_change_score']"
+      },
+      {
+        "example_id": "conv-44_qa_0001",
+        "error": "Invalid judge output for conv-44_qa_0001/irr_02: ['same_decision=true conflicts with a nonzero decision_change_score']"
+      },
+      {
+        "example_id": "conv-47_qa_0001",
+        "error": "Invalid judge output for conv-47_qa_0001/irr_03: ['same_decision=true conflicts with a nonzero decision_change_score']"
+      },
+      {
+        "example_id": "conv-30_qa_0002",
+        "error": "Invalid judge output for conv-30_qa_0002/irr_02: ['same_decision=true conflicts with a nonzero decision_change_score']"
+      },
+      {
+        "example_id": "conv-44_qa_0002",
+        "error": "Invalid judge output for conv-44_qa_0002/harm_00: ['same_decision=true conflicts with a nonzero decision_change_score']"
+      }
+    ]
+  },
+  "figures": [
+    "motivation_experiment/results/qwen_gemma_rollout5/figures/utility_vs_reliance.png",
+    "motivation_experiment/results/qwen_gemma_rollout5/figures/relevance_vs_utility.png",
+    "motivation_experiment/results/qwen_gemma_rollout5/figures/utility_sign_prediction.png"
+  ]
+}

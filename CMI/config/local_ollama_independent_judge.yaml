@@ -5,9 +5,9 @@ seed: 42
 openai:
   provider: ollama
   base_url: http://127.0.0.1:11434
-  agent_model: qwen2.5:latest
-  judge_model: gemma3:4b
-  dataset_model: qwen2.5:latest
+  agent_model: qwen2.5:7b
+  judge_model: llama3:8b
+  dataset_model: qwen2.5:7b
   embedding_model: nomic-embed-text
   temperature: 0.3
   max_output_tokens: 600

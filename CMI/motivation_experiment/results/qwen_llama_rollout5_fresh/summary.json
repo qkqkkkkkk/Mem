@@ -1,0 +1,372 @@
+{
+  "n_interventions": 60,
+  "n_examples": 20,
+  "thresholds": {
+    "top_relevance_quantile": 0.8,
+    "top_relevance_cutoff": 0.797448178,
+    "relevance_metric": "embedding",
+    "high_B_quantile": 0.8,
+    "high_B_cutoff": 1.0,
+    "low_B_cutoff": 1.0,
+    "B_bands_separated": false,
+    "utility_epsilon": 0.0
+  },
+  "overall": {
+    "mean_R": 0.6655407671666667,
+    "mean_embedding_R": 0.6655407671666667,
+    "mean_hybrid_R": 0.6831712931666666,
+    "mean_B": 0.9600000000000001,
+    "behavior_metric": "llm_decision",
+    "utility_scorer": "hybrid",
+    "mean_U": 0.26686802104354285,
+    "negative_U_rate": {
+      "estimate": 0.23333333333333334,
+      "lower": 0.13333333333333333,
+      "upper": 0.35,
+      "n": 60
+    },
+    "neutral_U_rate": {
+      "estimate": 0.16666666666666666,
+      "lower": 0.08333333333333333,
+      "upper": 0.26666666666666666,
+      "n": 60
+    },
+    "behavior_changed_rate": {
+      "estimate": 0.9833333333333333,
+      "lower": 0.95,
+      "upper": 1.0,
+      "n": 60
+    },
+    "rollout_uncertainty": {
+      "n_with_estimable_ci": 60,
+      "n_negative_with_95ci": 8,
+      "minimum_rollouts_for_claim": 3
+    }
+  },
+  "correlations": {
+    "pearson_B_U": {
+      "estimate": -0.08046918179279992,
+      "lower": -0.2504718581961035,
+      "upper": 0.23740594616308652,
+      "n": 60,
+      "n_clusters": 20,
+      "method": "question_cluster_bootstrap"
+    },
+    "spearman_B_U": {
+      "estimate": 0.038106700318576554,
+      "lower": -0.1760769900325323,
+      "upper": 0.2572071328365803,
+      "n": 60,
+      "n_clusters": 20,
+      "method": "question_cluster_bootstrap"
+    },
+    "pearson_R_U": {
+      "estimate": 0.14344784954665948,
+      "lower": -0.08762007027640098,
+      "upper": 0.365350856762261,
+      "n": 60,
+      "n_clusters": 20,
+      "method": "question_cluster_bootstrap"
+    },
+    "pearson_embedding_R_U": {
+      "estimate": 0.14344784954665948,
+      "lower": -0.08835121947699688,
+      "upper": 0.3780334799557648,
+      "n": 60,
+      "n_clusters": 20,
+      "method": "question_cluster_bootstrap"
+    },
+    "pearson_hybrid_R_U": {
+      "estimate": -0.1268715730362254,
+      "lower": -0.31180422166644345,
+      "upper": 0.06103417537331309,
+      "n": 60,
+      "n_clusters": 20,
+      "method": "question_cluster_bootstrap"
+    }
+  },
+  "naive_correlations": {
+    "pearson_B_U": {
+      "estimate": -0.08046918179279992,
+      "lower": -0.26098892853615857,
+      "upper": 0.21771331338519662,
+      "n": 60
+    },
+    "spearman_B_U": {
+      "estimate": 0.038106700318576554,
+      "lower": -0.17363697398306469,
+      "upper": 0.25666744929277563,
+      "n": 60
+    },
+    "pearson_R_U": {
+      "estimate": 0.14344784954665948,
+      "lower": -0.08703823268263908,
+      "upper": 0.3928496178878464,
+      "n": 60
+    },
+    "pearson_embedding_R_U": {
+      "estimate": 0.14344784954665948,
+      "lower": -0.10314938083822969,
+      "upper": 0.3819557330231663,
+      "n": 60
+    },
+    "pearson_hybrid_R_U": {
+      "estimate": -0.1268715730362254,
+      "lower": -0.3387799293801665,
+      "upper": 0.1112868530568875,
+      "n": 60
+    }
+  },
+  "within_label_correlations": {
+    "harmful": {
+      "estimate": 0.2384633129209101,
+      "lower": -0.17166055975410327,
+      "upper": 0.5930290291513393,
+      "n": 14,
+      "n_clusters": 14,
+      "method": "question_cluster_bootstrap"
+    },
+    "irrelevant": {
+      "estimate": -0.07220991499493697,
+      "lower": -0.4070246279401186,
+      "upper": 0.29962750216165746,
+      "n": 30,
+      "n_clusters": 20,
+      "method": "question_cluster_bootstrap"
+    },
+    "useful": {
+      "estimate": -0.1847753377785789,
+      "lower": -0.6343893507171652,
+      "upper": 0.5863118148893698,
+      "n": 16,
+      "n_clusters": 16,
+      "method": "question_cluster_bootstrap"
+    }
+  },
+  "utility_sign_prediction": {
+    "task": "positive_vs_negative_utility_excluding_neutral",
+    "neutral_definition": "abs(U) <= 0.0",
+    "n": 50,
+    "n_excluded_neutral": 10,
+    "n_clusters": 20,
+    "positive_rate": 0.72,
+    "average_precision_baseline": 0.72,
+    "models": {
+      "R": {
+        "features": [
+          "relevance_score"
+        ],
+        "cv": "leave_one_question_out",
+        "n_oof": 50,
+        "skipped_folds": 0,
+        "roc_auc": {
+          "estimate": 0.49603174603174605,
+          "lower": 0.3240530303030303,
+          "upper": 0.6713423295454544,
+          "n": 50,
+          "n_clusters": 20,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "average_precision": {
+          "estimate": 0.6963097986297402,
+          "lower": 0.5854039159185784,
+          "upper": 0.879072412785384,
+          "n": 50,
+          "n_clusters": 20,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "precision_at_0_5": 0.7307692307692307,
+        "recall_at_0_5": 0.5277777777777778,
+        "f1_at_0_5": 0.6129032258064516
+      },
+      "B": {
+        "features": [
+          "behavioral_reliance"
+        ],
+        "cv": "leave_one_question_out",
+        "n_oof": 50,
+        "skipped_folds": 0,
+        "roc_auc": {
+          "estimate": 0.3492063492063492,
+          "lower": 0.1775193671218487,
+          "upper": 0.5284756097560975,
+          "n": 50,
+          "n_clusters": 20,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "average_precision": {
+          "estimate": 0.7015246103323768,
+          "lower": 0.5389939324920734,
+          "upper": 0.8592422285987564,
+          "n": 50,
+          "n_clusters": 20,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "precision_at_0_5": 0.8,
+        "recall_at_0_5": 0.1111111111111111,
+        "f1_at_0_5": 0.1951219512195122
+      },
+      "R_plus_B": {
+        "features": [
+          "relevance_score",
+          "behavioral_reliance"
+        ],
+        "cv": "leave_one_question_out",
+        "n_oof": 50,
+        "skipped_folds": 0,
+        "roc_auc": {
+          "estimate": 0.5099206349206349,
+          "lower": 0.3194353070175439,
+          "upper": 0.7000187969924812,
+          "n": 50,
+          "n_clusters": 20,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "average_precision": {
+          "estimate": 0.7403469493762543,
+          "lower": 0.5809096414949226,
+          "upper": 0.8865264608516321,
+          "n": 50,
+          "n_clusters": 20,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "precision_at_0_5": 0.72,
+        "recall_at_0_5": 0.5,
+        "f1_at_0_5": 0.5901639344262295
+      }
+    }
+  },
+  "h1_top_relevance_negative_U": {
+    "estimate": 0.4166666666666667,
+    "lower": 0.16666666666666666,
+    "upper": 0.6666666666666666,
+    "n": 12
+  },
+  "labels": {
+    "harmful": {
+      "n": 14,
+      "mean_relevance": 0.814476665,
+      "mean_embedding_relevance": 0.814476665,
+      "mean_hybrid_relevance": 0.870809085,
+      "mean_B": 0.9928571428571429,
+      "mean_U": 0.029710884353741505,
+      "negative_U_rate": {
+        "estimate": 0.6428571428571429,
+        "lower": 0.35714285714285715,
+        "upper": 0.8571428571428571,
+        "n": 14
+      },
+      "neutral_U_rate": {
+        "estimate": 0.14285714285714285,
+        "lower": 0.0,
+        "upper": 0.35714285714285715,
+        "n": 14
+      }
+    },
+    "irrelevant": {
+      "n": 30,
+      "mean_relevance": 0.5541258179999999,
+      "mean_embedding_relevance": 0.5541258179999999,
+      "mean_hybrid_relevance": 0.5981309546666667,
+      "mean_B": 0.9733333333333333,
+      "mean_U": 0.1670984759495196,
+      "negative_U_rate": {
+        "estimate": 0.16666666666666666,
+        "lower": 0.03333333333333333,
+        "upper": 0.3,
+        "n": 30
+      },
+      "neutral_U_rate": {
+        "estimate": 0.26666666666666666,
+        "lower": 0.13333333333333333,
+        "upper": 0.43333333333333335,
+        "n": 30
+      }
+    },
+    "useful": {
+      "n": 16,
+      "mean_relevance": 0.7441248862500001,
+      "mean_embedding_relevance": 0.7441248862500001,
+      "mean_hybrid_relevance": 0.67843886,
+      "mean_B": 0.90625,
+      "mean_U": 0.6614484126984127,
+      "negative_U_rate": {
+        "estimate": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "n": 16
+      },
+      "neutral_U_rate": {
+        "estimate": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "n": 16
+      }
+    }
+  },
+  "quadrants": {
+    "high_B_positive_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    },
+    "high_B_negative_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    },
+    "low_B_positive_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    },
+    "low_B_negative_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    }
+  },
+  "retrieved_candidate_composition": {
+    "useful_candidate_rate": {
+      "count": 16,
+      "denominator": 60,
+      "rate": 0.26666666666666666
+    },
+    "harmful_candidate_rate": {
+      "count": 14,
+      "denominator": 60,
+      "rate": 0.23333333333333334
+    }
+  },
+  "run": {
+    "dataset": "causal_locomo_final.jsonl",
+    "config": "config/local_ollama_independent_judge.yaml",
+    "provider": "ollama",
+    "agent_model": "qwen2.5:7b",
+    "judge_model": "llama3:8b",
+    "judge_independent_from_agent": true,
+    "embedding_model": "nomic-embed-text",
+    "embedding_backend": "ollama",
+    "retrieval_metric": "hybrid",
+    "relevance_metric": "embedding",
+    "utility_scorer": "hybrid",
+    "behavior_scorer": "llm_decision",
+    "deterministic_only": false,
+    "rollouts": 5,
+    "generation_temperature": 0.3,
+    "invalid_judge_count": 0,
+    "judge_warning_count": 54,
+    "top_k": 3,
+    "skipped_examples": []
+  },
+  "analysis": {
+    "primary_correlation_ci": "question_cluster_bootstrap",
+    "prediction_cv": "leave_one_question_out",
+    "seed": 42
+  },
+  "figures": [
+    "motivation_experiment/results/qwen_llama_rollout5_fresh/figures/utility_vs_reliance.png",
+    "motivation_experiment/results/qwen_llama_rollout5_fresh/figures/relevance_vs_utility.png",
+    "motivation_experiment/results/qwen_llama_rollout5_fresh/figures/utility_sign_prediction.png"
+  ]
+}
