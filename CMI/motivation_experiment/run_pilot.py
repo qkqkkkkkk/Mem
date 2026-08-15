@@ -633,7 +633,7 @@ def _plot(rows: list[dict[str, Any]], summary: dict[str, Any], figure_dir: Path)
     b_cut = summary["thresholds"]["high_B_cutoff"]
     plt.axvline(b_cut, color="#555555", linestyle="--", linewidth=0.8)
     behavior_metric = summary.get("overall", {}).get("behavior_metric", "lexical")
-    behavior_label = "Decision-change reliance B" if behavior_metric in {"llm_decision", "human_decision"} else "Lexical answer divergence B"
+    behavior_label = "Decision-change reliance B" if behavior_metric in {"llm_decision", "human_decision", "multidim_decision"} else "Lexical answer divergence B"
     plt.xlabel(behavior_label)
     plt.ylabel("Causal utility U (score with - score without)")
     plt.title("Behavioral reliance vs causal utility")

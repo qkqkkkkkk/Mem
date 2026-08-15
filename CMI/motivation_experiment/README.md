@@ -160,6 +160,49 @@ deviation, and a rollout bootstrap interval. A multi-rollout run fails early whe
 the generation temperature is zero, and `--require-independent-judge` fails when
 the configured judge and agent model names are identical.
 
+### Diagnose and repair a saturated B measurement
+
+Do this before expanding the dataset when `B` is nearly all one or when the old
+judge reports normalization warnings. These commands reuse the existing Qwen
+answers: they do not rerun retrieval or generation.
+
+First export a blinded review bundle. The pair-level file combines repeated
+rollouts, so 54 rollout warnings in the current fresh result become 14 manual
+review units.
+
+```bash
+PYTHONPATH=. python motivation_experiment/make_diagnostic_bundle.py \
+  --input-dir motivation_experiment/results/qwen_llama_rollout5_fresh
+```
+
+Review `diagnostics/judge_warning_pair_review.csv` using only the two answers:
+enter 0 / 0.5 / 1 for conclusion and factual change, set whether an action is
+applicable, then record its action-change score. This file intentionally excludes
+the constructed memory label. Review `diagnostics/anomaly_review.csv` separately:
+it contains all harmful items, the harmful-positive-utility outliers, and every
+item with a five-rollout utility interval completely below zero.
+
+Next, keep the same independent judge model but replace the ambiguous single
+decision score with a three-dimensional rubric. Its overall B is the arithmetic
+mean of the applicable conclusion, factual, and action-change scores. The rubric
+does not receive the expected answer, scoring criteria, or memory label, so B is
+not contaminated by correctness/utility judgment.
+
+```bash
+PYTHONPATH=. python motivation_experiment/rejudge_multidim.py \
+  --input-dir motivation_experiment/results/qwen_llama_rollout5_fresh \
+  --output-dir motivation_experiment/results/qwen_llama_rollout5_multidim \
+  --config config/local_ollama_independent_judge.yaml \
+  --judge-model llama3:8b
+```
+
+This makes one deterministic local judge call for each existing answer pair
+(60 interventions x 5 rollouts = about 300 calls) and caches them under the new
+output directory. Keep the output directory separate from the original run. The
+new `summary.json` has `diagnostic_comparison`: compare old/new B distributions,
+the normalization-warning count, and cluster-bootstrap `B-U` correlation before
+making any claim about behavioral reliance.
+
 ### Human judging
 
 Every run writes `human_annotations.csv`. Annotate these columns on a `[0,1]`
