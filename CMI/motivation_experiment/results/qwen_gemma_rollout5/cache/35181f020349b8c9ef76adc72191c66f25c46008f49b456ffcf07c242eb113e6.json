@@ -1,0 +1,13 @@
+{
+  "text": "When Jon has lost his job as a banker, it was on 20 January, 2023.",
+  "json": null,
+  "usage": {
+    "input_tokens": 106,
+    "output_tokens": 25,
+    "total_tokens": 131
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 2.250850200653076,
+  "cached": false
+}

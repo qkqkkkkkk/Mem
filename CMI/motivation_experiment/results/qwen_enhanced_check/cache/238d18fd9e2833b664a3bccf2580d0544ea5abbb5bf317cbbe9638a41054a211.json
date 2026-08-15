@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"incorrect\",\n  \"decision_with\": \"incorrect\",\n  \"same_decision\": true,\n  \"decision_change_score\": 0.0,\n  \"confidence\": 1.0,\n  \"explanation\": \"Both answers fail to include the correct shared interests of watching movies and making desserts, and instead provide incorrect shared interests.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "incorrect",
+    "decision_with": "incorrect",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 1.0,
+    "explanation": "Both answers fail to include the correct shared interests of watching movies and making desserts, and instead provide incorrect shared interests."
+  },
+  "usage": {
+    "input_tokens": 504,
+    "output_tokens": 95,
+    "total_tokens": 599
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 28.530128002166748,
+  "cached": false
+}

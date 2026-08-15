@@ -52,7 +52,13 @@ class BaseAgent:
     def memories_from_example(self, example: BenchmarkExample) -> list[MemoryCard]:
         return [MemoryCard.from_benchmark_memory(memory) for memory in example.memory_bank]
 
-    def _answer_with_memories(self, example: BenchmarkExample, memories: Iterable[MemoryCard], prompt_kind: str = "agent") -> dict[str, Any]:
+    def _answer_with_memories(
+        self,
+        example: BenchmarkExample,
+        memories: Iterable[MemoryCard],
+        prompt_kind: str = "agent",
+        generation_metadata: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         memories = list(memories)
         prompt = self._render_prompt(example, memories, prompt_kind=prompt_kind)
         started = time.time()
@@ -70,6 +76,7 @@ class BaseAgent:
             model=self.model,
             temperature=self.temperature,
             max_output_tokens=self.max_output_tokens,
+            metadata=generation_metadata,
         )
         return {
             "text": result.get("text", ""),

@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"concise final answer or decision\",\n  \"decision_with\": \"concise final answer or decision\",\n  \"same_decision\": true,\n  \"decision_change_score\": 0.0,\n  \"confidence\": 0.9,\n  \"explanation\": \"Both answers are concise and indicate a lack of relevant information, thus scoring the same and not changing the decision.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "concise final answer or decision",
+    "decision_with": "concise final answer or decision",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 0.9,
+    "explanation": "Both answers are concise and indicate a lack of relevant information, thus scoring the same and not changing the decision."
+  },
+  "usage": {
+    "input_tokens": 531,
+    "output_tokens": 104,
+    "total_tokens": 635
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 26.305113077163696,
+  "cached": false
+}

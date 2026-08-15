@@ -1,0 +1,13 @@
+{
+  "text": "In February 2023, Gina lost her job at Door Dash.",
+  "json": null,
+  "usage": {
+    "input_tokens": 102,
+    "output_tokens": 17,
+    "total_tokens": 119
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 6.364157199859619,
+  "cached": false
+}

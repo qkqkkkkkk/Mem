@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 1.0,\n  \"decision_without\": \"NO_ANSWER\",\n  \"decision_with\": \"7 May 2023\",\n  \"same_decision\": true,\n  \"decision_change_score\": 0.0,\n  \"confidence\": 1.0,\n  \"explanation\": \"The answer with included the correct date as specified in the expected answer.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 1.0,
+    "decision_without": "NO_ANSWER",
+    "decision_with": "7 May 2023",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 1.0,
+    "explanation": "The answer with included the correct date as specified in the expected answer."
+  },
+  "usage": {
+    "input_tokens": 629,
+    "output_tokens": 109,
+    "total_tokens": 738
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "gemma3:4b",
+  "latency_seconds": 6.454855918884277,
+  "cached": false
+}

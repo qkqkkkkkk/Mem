@@ -14,6 +14,19 @@ answers. It then reports the `B-U` correlation, the fraction of negative-utility
 memories among highly relevant memories, and the four reliance/utility quadrants.
 Bootstrap intervals are included for the reported proportions and correlation.
 
+The enhanced pilot keeps separate measurements instead of treating one proxy as
+ground truth:
+
+- `embedding_relevance`: query-memory cosine similarity only.
+- `hybrid_relevance`: embedding + recency + lexical overlap, matching CMI retrieval.
+- `deterministic_utility`, `llm_utility`, and optional `human_utility`.
+- `lexical_answer_divergence`, LLM-judged decision change, and optional
+  human-judged decision change.
+- question-cluster bootstrap confidence intervals for all reported correlations.
+- within-label `R-U` correlations to separate group differences from gradients.
+- leave-one-question-out logistic models using `R`, `B`, and `R+B` to predict
+  positive versus negative utility (neutral interventions are reported and excluded).
+
 Install the repository dependencies first with `pip install -r requirements.txt`.
 Here `U` is the repository's deterministic (or hybrid, if the caller changes the
 agent/scorer configuration) task score difference, `score(with memory) -
@@ -57,6 +70,120 @@ The Ollama provider talks to `http://127.0.0.1:11434` and does not require an
 OpenAI key. Change `openai.agent_model` in `config/local_ollama.yaml` to any
 model shown by `ollama list` (for example `qwen3:8b`).
 
+## Enhanced motivation experiment
+
+Install a real local embedding model first:
+
+```bash
+ollama pull nomic-embed-text
+```
+
+Run a two-example check using embedding-only relevance, a 50/50 deterministic +
+local-Qwen utility judge, and decision-level behavioral reliance:
+
+```bash
+python motivation_experiment/run_pilot.py \
+  --config config/local_ollama.yaml \
+  --dataset causal_locomo_final.jsonl \
+  --max-examples 2 \
+  --top-k 3 \
+  --retrieval-metric hybrid \
+  --relevance-metric embedding \
+  --require-neural-embeddings \
+  --utility-scorer hybrid \
+  --behavior-scorer llm_decision \
+  --deterministic-weight 0.5 \
+  --judge-weight 0.5 \
+  --no-perturbation \
+  --output-dir motivation_experiment/results/qwen_enhanced_check
+```
+
+The comparative judge sees the task, gold behavior, and the two outputs, but not
+the memory role label. It scores both outputs and distinguishes a material answer,
+recommendation, tool, or action change from a paraphrase. Using the same Qwen model
+for generation and judging is inexpensive but not independent; human review is
+recommended for claims in a paper.
+
+### Reanalyze an existing run without calling Ollama
+
+The primary correlation intervals use a cluster bootstrap that resamples complete
+`example_id` groups. The prediction analysis fits logistic regression inside
+leave-one-question-out cross-validation, so interventions from a held-out question
+never enter its training fold.
+
+```bash
+python motivation_experiment/analyze_results.py \
+  --output-dir motivation_experiment/results/qwen_enhanced_check
+```
+
+The resulting `summary.json` contains:
+
+- `correlations`: primary question-cluster bootstrap estimates and intervals.
+- `naive_correlations`: row-level bootstrap results retained only for comparison.
+- `within_label_correlations`: separate `R-U` estimates for each constructed label.
+- `utility_sign_prediction`: out-of-fold AUC, average precision, and cluster intervals
+  for `R`, `B`, and `R+B`.
+
+### Independent local judge and repeated rollouts
+
+Pull a model from a different family once:
+
+```bash
+ollama pull gemma3:4b
+```
+
+Then run five independently cached rollouts per condition:
+
+```bash
+python motivation_experiment/run_pilot.py \
+  --config config/local_ollama_independent_judge.yaml \
+  --dataset causal_locomo_final.jsonl \
+  --max-examples 20 \
+  --top-k 3 \
+  --rollouts 5 \
+  --generation-temperature 0.3 \
+  --require-independent-judge \
+  --retrieval-metric hybrid \
+  --relevance-metric embedding \
+  --require-neural-embeddings \
+  --utility-scorer hybrid \
+  --behavior-scorer llm_decision \
+  --deterministic-weight 0.5 \
+  --judge-weight 0.5 \
+  --no-perturbation \
+  --output-dir motivation_experiment/results/qwen_gemma_rollout5
+```
+
+Every generation call includes a distinct rollout identifier in its cache key.
+For each intervention, the JSONL records `rollout_utilities`, their mean, standard
+deviation, and a rollout bootstrap interval. A multi-rollout run fails early when
+the generation temperature is zero, and `--require-independent-judge` fails when
+the configured judge and agent model names are identical.
+
+### Human judging
+
+Every run writes `human_annotations.csv`. Annotate these columns on a `[0,1]`
+scale:
+
+- `human_score_without`: task correctness without the memory.
+- `human_score_with`: task correctness with the memory.
+- `human_decision_change`: `0` same final decision, `1` contradictory/reversed
+  decision, intermediate values only for a partial material change.
+
+Do not edit IDs or outputs. After annotation, rerun the same command and output
+directory so model outputs are read from cache, replacing the two scorer options
+with:
+
+```bash
+  --utility-scorer human \
+  --behavior-scorer human_decision \
+  --human-annotations motivation_experiment/results/qwen_enhanced_check/human_annotations.csv
+```
+
+The run rewrites `memory_interventions.jsonl`, `summary.json`, and both figures
+using human `U` and decision-level `B` while preserving the filled annotation
+columns.
+
 From the repository root:
 
 ```bash
@@ -84,6 +211,7 @@ still increase runtime approximately linearly.
 ## Outputs
 
 - `memory_interventions.jsonl`: one row per `(example, retrieved memory)`.
+- `human_annotations.csv`: blinded human-scoring template and optional input.
 - `summary.json`: aggregate statistics and bootstrap 95% intervals.
 - `summary.csv`: compact summary for tables.
 - `figures/utility_vs_reliance.png`: `B-U` scatter with quadrant boundaries.

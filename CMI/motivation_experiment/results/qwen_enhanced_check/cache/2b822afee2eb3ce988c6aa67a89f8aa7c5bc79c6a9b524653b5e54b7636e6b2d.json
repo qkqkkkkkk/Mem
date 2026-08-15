@@ -1,0 +1,13 @@
+{
+  "text": "Jon and Gina both like to destress by going for a run in the park.",
+  "json": null,
+  "usage": {
+    "input_tokens": 60,
+    "output_tokens": 18,
+    "total_tokens": 78
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 9.956886053085327,
+  "cached": false
+}

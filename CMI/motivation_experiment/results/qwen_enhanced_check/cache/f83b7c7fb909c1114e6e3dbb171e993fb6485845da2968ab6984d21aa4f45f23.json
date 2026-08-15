@@ -1,0 +1,13 @@
+{
+  "text": "Joanna and Nate share an interest in hiking and trying new restaurants.",
+  "json": null,
+  "usage": {
+    "input_tokens": 59,
+    "output_tokens": 15,
+    "total_tokens": 74
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 11.480958938598633,
+  "cached": false
+}

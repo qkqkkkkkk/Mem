@@ -1,0 +1,13 @@
+{
+  "text": "Maria had dinner with John on May 3, 2023.",
+  "json": null,
+  "usage": {
+    "input_tokens": 111,
+    "output_tokens": 17,
+    "total_tokens": 128
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 1.5683610439300537,
+  "cached": false
+}

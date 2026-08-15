@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"actual conclusion or NO_ANSWER\",\n  \"decision_with\": \"actual conclusion or NO_ANSWER\",\n  \"same_decision\": true,\n  \"decision_change_score\": 0.0,\n  \"confidence\": 0.0,\n  \"explanation\": \"The provided answer without the candidate memory does not align with the expected answer or any of the answer aliases. The candidate memory provides a more accurate and relevant response based on the given information.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "actual conclusion or NO_ANSWER",
+    "decision_with": "actual conclusion or NO_ANSWER",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 0.0,
+    "explanation": "The provided answer without the candidate memory does not align with the expected answer or any of the answer aliases. The candidate memory provides a more accurate and relevant response based on the given information."
+  },
+  "usage": {
+    "input_tokens": 660,
+    "output_tokens": 134,
+    "total_tokens": 794
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "gemma3:4b",
+  "latency_seconds": 21.916303873062134,
+  "cached": false
+}

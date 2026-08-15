@@ -1,0 +1,13 @@
+{
+  "text": "I don't have any relevant memories about Caroline's interests or aptitudes to determine the fields she would likely pursue in her education.",
+  "json": null,
+  "usage": {
+    "input_tokens": 104,
+    "output_tokens": 27,
+    "total_tokens": 131
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 4.320450782775879,
+  "cached": false
+}

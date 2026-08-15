@@ -1,0 +1,44 @@
+# Local, no-API-key configuration. Install models with:
+#   ollama pull qwen2.5:latest
+#   ollama pull nomic-embed-text  # optional; retrieval falls back deterministically
+seed: 42
+
+openai:
+  provider: ollama
+  base_url: http://127.0.0.1:11434
+  agent_model: qwen2.5:latest
+  judge_model: qwen2.5:latest
+  dataset_model: qwen2.5:latest
+  embedding_model: nomic-embed-text
+  temperature: 0.0
+  max_output_tokens: 600
+  use_api: true
+
+retrieval:
+  top_k: 5
+  hybrid:
+    alpha: 0.7
+    beta: 0.2
+    gamma: 0.1
+
+cmi:
+  utility_threshold: 0.0
+  stability_threshold: 0.0
+  use_perturbation: true
+  perturbation_types:
+    - negation
+    - scope_shift
+    - temporal_shift
+    - entity_swap
+  scorer: deterministic
+
+scoring:
+  deterministic_weight: 1.0
+  llm_judge_weight: 0.0
+
+experiment:
+  agents:
+    - cmi
+  max_examples: 20
+  deterministic_only: false
+  skip_llm_judge: true

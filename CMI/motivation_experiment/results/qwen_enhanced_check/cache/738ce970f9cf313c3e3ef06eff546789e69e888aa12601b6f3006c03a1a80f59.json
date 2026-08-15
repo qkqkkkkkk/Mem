@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"incorrect\",\n  \"decision_with\": \"correct\",\n  \"same_decision\": false,\n  \"decision_change_score\": 1.0,\n  \"confidence\": 1.0,\n  \"explanation\": \"The first answer includes an incorrect method (running) and does not match the expected answer. The second answer correctly states that both Jon and Gina like to destress by dancing, matching the expected answer.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "incorrect",
+    "decision_with": "correct",
+    "same_decision": false,
+    "decision_change_score": 1.0,
+    "confidence": 1.0,
+    "explanation": "The first answer includes an incorrect method (running) and does not match the expected answer. The second answer correctly states that both Jon and Gina like to destress by dancing, matching the expected answer."
+  },
+  "usage": {
+    "input_tokens": 476,
+    "output_tokens": 112,
+    "total_tokens": 588
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 32.94253420829773,
+  "cached": false
+}

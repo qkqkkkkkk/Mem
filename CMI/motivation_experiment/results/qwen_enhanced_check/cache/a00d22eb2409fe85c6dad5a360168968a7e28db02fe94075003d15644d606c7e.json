@@ -1,0 +1,13 @@
+{
+  "text": "John suspects he has obesity, which he believes is a weight problem. He also thinks his fingers are too big and suggests starting morning runs to exercise.",
+  "json": null,
+  "usage": {
+    "input_tokens": 113,
+    "output_tokens": 31,
+    "total_tokens": 144
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 6.123234033584595,
+  "cached": false
+}

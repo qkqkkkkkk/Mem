@@ -1,0 +1,13 @@
+{
+  "text": "There is no relevant information in the provided memories to determine if Nate has friends besides Joanna.",
+  "json": null,
+  "usage": {
+    "input_tokens": 108,
+    "output_tokens": 19,
+    "total_tokens": 127
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 3.4467029571533203,
+  "cached": false
+}

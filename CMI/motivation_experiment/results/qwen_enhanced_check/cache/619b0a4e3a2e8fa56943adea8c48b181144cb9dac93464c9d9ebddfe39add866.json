@@ -1,0 +1,13 @@
+{
+  "text": "I don't have any specific memory about when Melanie painted a sunrise.",
+  "json": null,
+  "usage": {
+    "input_tokens": 107,
+    "output_tokens": 15,
+    "total_tokens": 122
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 3.0778067111968994,
+  "cached": false
+}

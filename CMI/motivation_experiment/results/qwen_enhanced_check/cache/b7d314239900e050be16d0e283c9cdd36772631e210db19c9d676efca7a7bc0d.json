@@ -1,0 +1,13 @@
+{
+  "text": "Evan drives a Toyota Camry.",
+  "json": null,
+  "usage": {
+    "input_tokens": 57,
+    "output_tokens": 9,
+    "total_tokens": 66
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 8.908385992050171,
+  "cached": false
+}

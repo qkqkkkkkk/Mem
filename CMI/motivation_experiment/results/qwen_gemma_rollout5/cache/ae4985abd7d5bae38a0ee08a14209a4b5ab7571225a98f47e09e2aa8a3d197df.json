@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"actual conclusion or NO_ANSWER\",\n  \"decision_with\": \"actual conclusion or NO_ANSWER\",\n  \"same_decision\": true,\n  \"decision_change_score\": 0.0,\n  \"confidence\": 0.0,\n  \"explanation\": \"Both answers failed to meet the 'must_include' criteria. Answer with the candidate memory incorrectly stated Nate doesn't play with others and didn't include the necessary keywords.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "actual conclusion or NO_ANSWER",
+    "decision_with": "actual conclusion or NO_ANSWER",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 0.0,
+    "explanation": "Both answers failed to meet the 'must_include' criteria. Answer with the candidate memory incorrectly stated Nate doesn't play with others and didn't include the necessary keywords."
+  },
+  "usage": {
+    "input_tokens": 670,
+    "output_tokens": 133,
+    "total_tokens": 803
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "gemma3:4b",
+  "latency_seconds": 10.056702852249146,
+  "cached": false
+}

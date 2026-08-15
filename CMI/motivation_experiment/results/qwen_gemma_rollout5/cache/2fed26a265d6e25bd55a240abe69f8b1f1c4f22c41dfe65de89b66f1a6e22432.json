@@ -1,0 +1,13 @@
+{
+  "text": "Given Nate's behavior of mostly playing solo games and not talking to other players outside matches, it is unlikely that he has friends besides Joanna.",
+  "json": null,
+  "usage": {
+    "input_tokens": 105,
+    "output_tokens": 29,
+    "total_tokens": 134
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 2.8355469703674316,
+  "cached": false
+}

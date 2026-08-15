@@ -1,0 +1,146 @@
+2026-08-13 23:26:48,484 INFO run_experiment: Starting run in outputs/runs/run_20260813_232648
+2026-08-13 23:26:51,546 ERROR run_experiment: Failed example=spurious_000019 agent=cmi
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 941, in connect
+    self.sock = self._create_connection(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/api/openai_client.py", line 171, in _ollama_request
+    with urllib.request.urlopen(request, timeout=300) as response:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 61] Connection refused>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/.venv/lib/python3.10/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/api/openai_client.py", line 195, in _complete_ollama
+    response = self._ollama_request("/api/chat", body)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/api/openai_client.py", line 174, in _ollama_request
+    raise RuntimeError(
+RuntimeError: Could not reach Ollama at http://127.0.0.1:11434. Start it with `ollama serve` and pull the configured model. Original error: <urlopen error [Errno 61] Connection refused>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/experiments/run_experiment.py", line 122, in run_experiment
+    output = agent.answer(example)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/agents/cmi_agent.py", line 78, in answer
+    perturbed_result = self._answer_with_memories(example, [perturbed])
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/agents/base_agent.py", line 68, in _answer_with_memories
+    result = self.client.complete(
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/api/openai_client.py", line 122, in complete
+    result = self._complete_ollama(payload)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/.venv/lib/python3.10/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/.venv/lib/python3.10/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/.venv/lib/python3.10/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/.venv/lib/python3.10/site-packages/tenacity/__init__.py", line 414, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x10a0cbd60 state=finished raised RuntimeError>]
+2026-08-13 23:27:06,644 ERROR run_experiment: Failed example=poisoned_000005 agent=cmi
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 941, in connect
+    self.sock = self._create_connection(
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/api/openai_client.py", line 171, in _ollama_request
+    with urllib.request.urlopen(request, timeout=300) as response:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 61] Connection refused>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/.venv/lib/python3.10/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/api/openai_client.py", line 195, in _complete_ollama
+    response = self._ollama_request("/api/chat", body)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/api/openai_client.py", line 174, in _ollama_request
+    raise RuntimeError(
+RuntimeError: Could not reach Ollama at http://127.0.0.1:11434. Start it with `ollama serve` and pull the configured model. Original error: <urlopen error [Errno 61] Connection refused>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/experiments/run_experiment.py", line 122, in run_experiment
+    output = agent.answer(example)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/agents/cmi_agent.py", line 41, in answer
+    no_result = self._answer_with_memories(example, [], prompt_kind="no_memory")
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/agents/base_agent.py", line 68, in _answer_with_memories
+    result = self.client.complete(
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/src/api/openai_client.py", line 122, in complete
+    result = self._complete_ollama(payload)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/.venv/lib/python3.10/site-packages/tenacity/__init__.py", line 331, in wrapped_f
+    return copy(f, *args, **kw)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/.venv/lib/python3.10/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/.venv/lib/python3.10/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+  File "/Users/xiaobaobei/causal-memory-intervention/CMI/.venv/lib/python3.10/site-packages/tenacity/__init__.py", line 414, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x10a10df90 state=finished raised RuntimeError>]
+2026-08-13 23:27:06,664 INFO run_experiment: Completed run with 0 predictions and 2 failures

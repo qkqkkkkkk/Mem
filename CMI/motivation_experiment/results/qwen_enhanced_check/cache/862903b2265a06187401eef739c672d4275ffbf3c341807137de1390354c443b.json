@@ -1,0 +1,13 @@
+{
+  "text": "There is no information in the retrieved memories relevant to John's suspected health problems.",
+  "json": null,
+  "usage": {
+    "input_tokens": 101,
+    "output_tokens": 17,
+    "total_tokens": 118
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 2.99019193649292,
+  "cached": false
+}

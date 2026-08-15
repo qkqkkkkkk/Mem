@@ -1,0 +1,13 @@
+{
+  "text": "Based on the retrieved memory, there is no information about how Jon and Gina destress together. The memory only mentions Jon's dance practices and does not include any details about Gina or their shared stress-relief activities.",
+  "json": null,
+  "usage": {
+    "input_tokens": 114,
+    "output_tokens": 44,
+    "total_tokens": 158
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 5.885011911392212,
+  "cached": false
+}

@@ -1,0 +1,13 @@
+{
+  "text": "To answer the question about how Jon and Gina both like to destress, I would need relevant information about their stress-relief methods. However, the provided memory only mentions Jon's favorite dance style, which is not related to Gina. Therefore, I don't have enough relevant information to determine their common method of destressing.",
+  "json": null,
+  "usage": {
+    "input_tokens": 96,
+    "output_tokens": 66,
+    "total_tokens": 162
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 10.664084911346436,
+  "cached": false
+}

@@ -1,0 +1,22 @@
+{
+  "text": "{\"score_without\": 0.0, \"score_with\": 1.0, \"decision_without\": \"NO_ANSWER\", \"decision_with\": \"2020\", \"same_decision\": true, \"decision_change_score\": 0.0, \"confidence\": 1.0, \"explanation\": \"The answer '2020' correctly identifies the year Audrey adopted the first three of her dogs based on the provided temporal reasoning and session date. The answer 'NO_ANSWER' did not provide a solution.\"}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 1.0,
+    "decision_without": "NO_ANSWER",
+    "decision_with": "2020",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 1.0,
+    "explanation": "The answer '2020' correctly identifies the year Audrey adopted the first three of her dogs based on the provided temporal reasoning and session date. The answer 'NO_ANSWER' did not provide a solution."
+  },
+  "usage": {
+    "input_tokens": 551,
+    "output_tokens": 117,
+    "total_tokens": 668
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "gemma3:4b",
+  "latency_seconds": 8.271461963653564,
+  "cached": false
+}

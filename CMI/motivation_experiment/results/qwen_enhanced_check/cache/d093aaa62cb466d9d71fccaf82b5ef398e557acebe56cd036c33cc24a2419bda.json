@@ -1,0 +1,13 @@
+{
+  "text": "Calvin first traveled to Tokyo in 2010.",
+  "json": null,
+  "usage": {
+    "input_tokens": 57,
+    "output_tokens": 14,
+    "total_tokens": 71
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 21.087225675582886,
+  "cached": false
+}

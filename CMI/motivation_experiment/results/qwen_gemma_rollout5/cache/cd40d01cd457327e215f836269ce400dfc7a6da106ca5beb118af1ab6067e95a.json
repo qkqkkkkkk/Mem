@@ -1,0 +1,13 @@
+{
+  "text": "Given the memory retrieved, it is unlikely that Nate has friends besides Joanna, as the information suggests he primarily plays solo and does not interact with other players outside of matches.",
+  "json": null,
+  "usage": {
+    "input_tokens": 105,
+    "output_tokens": 35,
+    "total_tokens": 140
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 3.753993034362793,
+  "cached": false
+}

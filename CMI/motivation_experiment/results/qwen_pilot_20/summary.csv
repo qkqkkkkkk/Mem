@@ -1,0 +1,5 @@
+metric,estimate,lower,upper,n
+pearson_B_U,0.0,0.0,0.0,60
+spearman_B_U,0.0,0.0,0.0,60
+pearson_R_U,0.0,0.0,0.0,60
+top_relevance_negative_U,1.0,1.0,1.0,12

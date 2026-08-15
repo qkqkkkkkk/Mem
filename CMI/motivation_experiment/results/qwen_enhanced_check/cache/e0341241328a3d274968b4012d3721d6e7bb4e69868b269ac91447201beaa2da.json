@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 1.0,\n  \"decision_without\": \"incorrect\",\n  \"decision_with\": \"correct\",\n  \"same_decision\": false,\n  \"decision_change_score\": 1.0,\n  \"confidence\": 1.0,\n  \"explanation\": \"The 'without' answer is incorrect as it does not provide the requested information. The 'with' answer is correct and includes the expected activity 'bowling'.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 1.0,
+    "decision_without": "incorrect",
+    "decision_with": "correct",
+    "same_decision": false,
+    "decision_change_score": 1.0,
+    "confidence": 1.0,
+    "explanation": "The 'without' answer is incorrect as it does not provide the requested information. The 'with' answer is correct and includes the expected activity 'bowling'."
+  },
+  "usage": {
+    "input_tokens": 492,
+    "output_tokens": 105,
+    "total_tokens": 597
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 18.41107988357544,
+  "cached": false
+}

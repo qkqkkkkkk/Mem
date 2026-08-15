@@ -79,6 +79,7 @@ class OpenAIClient:
         self.pricing = pricing or DEFAULT_PRICING_PER_1M
         self.rate_limiter = RateLimiter(rate_limit_seconds)
         self._client = None
+        self.last_embedding_backend: str | None = None
 
         if self.use_api and self.provider != "ollama":
             try:
@@ -104,6 +105,9 @@ class OpenAIClient:
     ) -> dict[str, Any]:
         payload = {
             "kind": "chat",
+            "provider": self.provider,
+            "use_api": self.use_api,
+            "base_url": self.base_url,
             "model": model,
             "system": system,
             "prompt": prompt,
@@ -244,21 +248,33 @@ class OpenAIClient:
         return result.get("json") or parse_json_object(result.get("text", ""))
 
     def embed(self, texts: list[str], model: str = "text-embedding-3-small") -> list[list[float]]:
-        payload = {"kind": "embedding", "model": model, "texts": texts}
+        payload = {
+            "kind": "embedding",
+            "provider": self.provider,
+            "use_api": self.use_api,
+            "base_url": self.base_url,
+            "model": model,
+            "texts": texts,
+        }
         cached = self.cache.get(payload)
         if cached is not None:
+            self.last_embedding_backend = cached.get("backend", "cached_unknown")
             return cached["embeddings"]
         if self.use_api and self.provider == "ollama":
             try:
                 embeddings = self._embed_ollama(texts, model)
+                self.last_embedding_backend = "ollama"
             except Exception:
                 # Chat-only Ollama installs often do not include an embedding model.
                 embeddings = [deterministic_embedding(text) for text in texts]
+                self.last_embedding_backend = "deterministic_fallback"
         elif self.use_api and self._client is not None:
             embeddings = self._embed_api(texts, model)
+            self.last_embedding_backend = "openai"
         else:
             embeddings = [deterministic_embedding(text) for text in texts]
-        self.cache.set(payload, {"embeddings": embeddings})
+            self.last_embedding_backend = "deterministic_fallback"
+        self.cache.set(payload, {"embeddings": embeddings, "backend": self.last_embedding_backend})
         return embeddings
 
     @_retry_decorator()

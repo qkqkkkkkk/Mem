@@ -1,0 +1,139 @@
+{
+  "n_interventions": 60,
+  "n_examples": 20,
+  "thresholds": {
+    "top_relevance_quantile": 0.8,
+    "top_relevance_cutoff": 0.6510708600000001,
+    "high_B_quantile": 0.8,
+    "high_B_cutoff": 0.0,
+    "low_B_cutoff": 0.0,
+    "B_bands_separated": false,
+    "utility_epsilon": 0.0
+  },
+  "overall": {
+    "mean_R": 0.557655754,
+    "mean_B": 0.0,
+    "mean_U": 0.0,
+    "negative_U_rate": {
+      "estimate": 1.0,
+      "lower": 1.0,
+      "upper": 1.0,
+      "n": 60
+    },
+    "behavior_changed_rate": {
+      "estimate": 0.0,
+      "lower": 0.0,
+      "upper": 0.0,
+      "n": 60
+    }
+  },
+  "correlations": {
+    "pearson_B_U": {
+      "estimate": 0.0,
+      "lower": 0.0,
+      "upper": 0.0,
+      "n": 60
+    },
+    "spearman_B_U": {
+      "estimate": 0.0,
+      "lower": 0.0,
+      "upper": 0.0,
+      "n": 60
+    },
+    "pearson_R_U": {
+      "estimate": 0.0,
+      "lower": 0.0,
+      "upper": 0.0,
+      "n": 60
+    }
+  },
+  "h1_top_relevance_negative_U": {
+    "estimate": 1.0,
+    "lower": 1.0,
+    "upper": 1.0,
+    "n": 12
+  },
+  "labels": {
+    "harmful": {
+      "n": 14,
+      "mean_relevance": 0.7630809842857144,
+      "mean_B": 0.0,
+      "mean_U": 0.0,
+      "negative_U_rate": {
+        "estimate": 1.0,
+        "lower": 1.0,
+        "upper": 1.0,
+        "n": 14
+      }
+    },
+    "irrelevant": {
+      "n": 29,
+      "mean_relevance": 0.4620183120689655,
+      "mean_B": 0.0,
+      "mean_U": 0.0,
+      "negative_U_rate": {
+        "estimate": 1.0,
+        "lower": 1.0,
+        "upper": 1.0,
+        "n": 29
+      }
+    },
+    "useful": {
+      "n": 17,
+      "mean_relevance": 0.5516282594117647,
+      "mean_B": 0.0,
+      "mean_U": 0.0,
+      "negative_U_rate": {
+        "estimate": 1.0,
+        "lower": 1.0,
+        "upper": 1.0,
+        "n": 17
+      }
+    }
+  },
+  "quadrants": {
+    "high_B_positive_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    },
+    "high_B_negative_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    },
+    "low_B_positive_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    },
+    "low_B_negative_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    }
+  },
+  "retrieved_candidate_composition": {
+    "useful_candidate_rate": {
+      "count": 17,
+      "denominator": 60,
+      "rate": 0.2833333333333333
+    },
+    "harmful_candidate_rate": {
+      "count": 14,
+      "denominator": 60,
+      "rate": 0.23333333333333334
+    }
+  },
+  "run": {
+    "dataset": "causal_locomo_final.jsonl",
+    "config": "config/local_ollama.yaml",
+    "rollouts": 1,
+    "top_k": 3,
+    "skipped_examples": []
+  },
+  "figures": [
+    "motivation_experiment/results/qwen_pilot_20/figures/utility_vs_reliance.png",
+    "motivation_experiment/results/qwen_pilot_20/figures/relevance_vs_utility.png"
+  ]
+}

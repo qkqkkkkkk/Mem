@@ -1,0 +1,25 @@
+{
+  "num_predictions": 2,
+  "total_cost_usd": 0.0,
+  "total_tokens": 2898,
+  "average_cost_usd": 0.0,
+  "tracker": {
+    "total_cost_usd": 0.0,
+    "total_tokens": 2898,
+    "num_records": 2,
+    "records": [
+      {
+        "agent_name": "cmi",
+        "example_id": "spurious_000019",
+        "cost_usd": 0.0,
+        "total_tokens": 1742
+      },
+      {
+        "agent_name": "cmi",
+        "example_id": "poisoned_000005",
+        "cost_usd": 0.0,
+        "total_tokens": 1156
+      }
+    ]
+  }
+}

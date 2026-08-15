@@ -1,0 +1,13 @@
+{
+  "text": "Based on the name Caroline, there is no specific indication of her likely educational fields. More context about her interests, skills, and career aspirations would be needed to determine which fields she might pursue in education.",
+  "json": null,
+  "usage": {
+    "input_tokens": 62,
+    "output_tokens": 42,
+    "total_tokens": 104
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 20.826792001724243,
+  "cached": false
+}

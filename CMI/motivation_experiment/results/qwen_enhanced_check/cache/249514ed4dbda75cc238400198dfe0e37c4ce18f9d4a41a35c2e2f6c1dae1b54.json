@@ -1,0 +1,13 @@
+{
+  "text": "The information provided does not include details about James's recreational activity on March 16, 2022.",
+  "json": null,
+  "usage": {
+    "input_tokens": 67,
+    "output_tokens": 25,
+    "total_tokens": 92
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 12.827651977539062,
+  "cached": false
+}

@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 1.0,\n  \"decision_without\": \"concise final answer or decision\",\n  \"decision_with\": \"concise final answer or decision\",\n  \"same_decision\": false,\n  \"decision_change_score\": 1.0,\n  \"confidence\": 1.0,\n  \"explanation\": \"The 'without' answer does not provide the specific year, while the 'with' answer directly states the correct year 2019.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 1.0,
+    "decision_without": "concise final answer or decision",
+    "decision_with": "concise final answer or decision",
+    "same_decision": false,
+    "decision_change_score": 1.0,
+    "confidence": 1.0,
+    "explanation": "The 'without' answer does not provide the specific year, while the 'with' answer directly states the correct year 2019."
+  },
+  "usage": {
+    "input_tokens": 546,
+    "output_tokens": 111,
+    "total_tokens": 657
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 20.586435794830322,
+  "cached": false
+}

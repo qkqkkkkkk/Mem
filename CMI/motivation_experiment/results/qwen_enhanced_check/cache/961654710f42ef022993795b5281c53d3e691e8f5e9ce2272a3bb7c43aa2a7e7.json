@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"The answer does not include any of the expected indoor activities and instead mentions outdoor activities, which are not allowed per the scoring criteria.\",\n  \"decision_with\": \"The answer explicitly states that Andrew and his girlfriend do not pursue any indoor activities, which contradicts the expected answer and scoring criteria.\",\n  \"same_decision\": false,\n  \"decision_change_score\": 1.0,\n  \"confidence\": 1.0,\n  \"explanation\": \"Both answers contradict the expected indoor activities and are therefore scored and decided as incorrect.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "The answer does not include any of the expected indoor activities and instead mentions outdoor activities, which are not allowed per the scoring criteria.",
+    "decision_with": "The answer explicitly states that Andrew and his girlfriend do not pursue any indoor activities, which contradicts the expected answer and scoring criteria.",
+    "same_decision": false,
+    "decision_change_score": 1.0,
+    "confidence": 1.0,
+    "explanation": "Both answers contradict the expected indoor activities and are therefore scored and decided as incorrect."
+  },
+  "usage": {
+    "input_tokens": 597,
+    "output_tokens": 136,
+    "total_tokens": 733
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 80.67727708816528,
+  "cached": false
+}

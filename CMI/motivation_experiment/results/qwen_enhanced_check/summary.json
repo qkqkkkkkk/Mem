@@ -1,0 +1,413 @@
+{
+  "n_interventions": 60,
+  "n_examples": 20,
+  "thresholds": {
+    "top_relevance_quantile": 0.8,
+    "top_relevance_cutoff": 0.797333352,
+    "relevance_metric": "embedding",
+    "high_B_quantile": 0.8,
+    "high_B_cutoff": 1.0,
+    "low_B_cutoff": 0.0,
+    "B_bands_separated": true,
+    "utility_epsilon": 0.0
+  },
+  "overall": {
+    "mean_R": 0.6654936873333334,
+    "mean_embedding_R": 0.6654936873333334,
+    "mean_hybrid_R": 0.6831548151666667,
+    "mean_B": 0.3416666666666667,
+    "behavior_metric": "llm_decision",
+    "utility_scorer": "hybrid",
+    "mean_U": 0.16069973544973545,
+    "negative_U_rate": {
+      "estimate": 0.2,
+      "lower": 0.1,
+      "upper": 0.3,
+      "n": 60
+    },
+    "neutral_U_rate": {
+      "estimate": 0.4666666666666667,
+      "lower": 0.3333333333333333,
+      "upper": 0.5833333333333334,
+      "n": 60
+    },
+    "behavior_changed_rate": {
+      "estimate": 0.35,
+      "lower": 0.23333333333333334,
+      "upper": 0.4666666666666667,
+      "n": 60
+    },
+    "rollout_uncertainty": {
+      "n_with_estimable_ci": 0,
+      "n_negative_with_95ci": 0,
+      "minimum_rollouts_for_claim": 3
+    }
+  },
+  "correlations": {
+    "pearson_B_U": {
+      "estimate": 0.7498264569067358,
+      "lower": 0.571409859816896,
+      "upper": 0.9035388612204441,
+      "n": 60,
+      "n_clusters": 20,
+      "method": "question_cluster_bootstrap"
+    },
+    "spearman_B_U": {
+      "estimate": 0.498812761430498,
+      "lower": 0.2074453059764755,
+      "upper": 0.7935690902225776,
+      "n": 60,
+      "n_clusters": 20,
+      "method": "question_cluster_bootstrap"
+    },
+    "pearson_R_U": {
+      "estimate": 0.34340762681412007,
+      "lower": 0.23369584350235661,
+      "upper": 0.4708827594034606,
+      "n": 60,
+      "n_clusters": 20,
+      "method": "question_cluster_bootstrap"
+    },
+    "pearson_embedding_R_U": {
+      "estimate": 0.34340762681412007,
+      "lower": 0.2367658861567474,
+      "upper": 0.4640980155497298,
+      "n": 60,
+      "n_clusters": 20,
+      "method": "question_cluster_bootstrap"
+    },
+    "pearson_hybrid_R_U": {
+      "estimate": -0.019877040441783678,
+      "lower": -0.1596995473694783,
+      "upper": 0.13182215834592373,
+      "n": 60,
+      "n_clusters": 20,
+      "method": "question_cluster_bootstrap"
+    }
+  },
+  "naive_correlations": {
+    "pearson_B_U": {
+      "estimate": 0.7498264569067358,
+      "lower": 0.5829796069807631,
+      "upper": 0.9043864624049552,
+      "n": 60
+    },
+    "spearman_B_U": {
+      "estimate": 0.498812761430498,
+      "lower": 0.21736026512079065,
+      "upper": 0.7631365290928328,
+      "n": 60
+    },
+    "pearson_R_U": {
+      "estimate": 0.34340762681412007,
+      "lower": 0.15590504845756747,
+      "upper": 0.5504507487754081,
+      "n": 60
+    },
+    "pearson_embedding_R_U": {
+      "estimate": 0.34340762681412007,
+      "lower": 0.15092351789768502,
+      "upper": 0.5386111313162998,
+      "n": 60
+    },
+    "pearson_hybrid_R_U": {
+      "estimate": -0.019877040441783678,
+      "lower": -0.2049913483006453,
+      "upper": 0.2103483826991692,
+      "n": 60
+    }
+  },
+  "within_label_correlations": {
+    "harmful": {
+      "estimate": 0.16302220007364426,
+      "lower": -0.16233700300203419,
+      "upper": 0.6223343426344446,
+      "n": 14,
+      "n_clusters": 14,
+      "method": "question_cluster_bootstrap"
+    },
+    "irrelevant": {
+      "estimate": 0.1482808553168382,
+      "lower": -0.15544431247962506,
+      "upper": 0.4963754432344884,
+      "n": 30,
+      "n_clusters": 20,
+      "method": "question_cluster_bootstrap"
+    },
+    "useful": {
+      "estimate": 0.15630065105741958,
+      "lower": -0.5099616763625674,
+      "upper": 0.7040281458399443,
+      "n": 16,
+      "n_clusters": 16,
+      "method": "question_cluster_bootstrap"
+    }
+  },
+  "utility_sign_prediction": {
+    "task": "positive_vs_negative_utility_excluding_neutral",
+    "neutral_definition": "abs(U) <= 0.0",
+    "n": 32,
+    "n_excluded_neutral": 28,
+    "n_clusters": 20,
+    "positive_rate": 0.625,
+    "average_precision_baseline": 0.625,
+    "models": {
+      "R": {
+        "features": [
+          "relevance_score"
+        ],
+        "cv": "leave_one_question_out",
+        "n_oof": 32,
+        "skipped_folds": 0,
+        "roc_auc": {
+          "estimate": 0.46249999999999997,
+          "lower": 0.16837719298245613,
+          "upper": 0.7074932867883995,
+          "n": 32,
+          "n_clusters": 20,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "average_precision": {
+          "estimate": 0.6002712479059213,
+          "lower": 0.4902018486733399,
+          "upper": 0.8210543029214571,
+          "n": 32,
+          "n_clusters": 20,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "precision_at_0_5": 0.6842105263157895,
+        "recall_at_0_5": 0.65,
+        "f1_at_0_5": 0.6666666666666666
+      },
+      "B": {
+        "features": [
+          "behavioral_reliance"
+        ],
+        "cv": "leave_one_question_out",
+        "n_oof": 32,
+        "skipped_folds": 0,
+        "roc_auc": {
+          "estimate": 0.5854166666666667,
+          "lower": 0.23697574013157893,
+          "upper": 0.8825396825396822,
+          "n": 32,
+          "n_clusters": 20,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "average_precision": {
+          "estimate": 0.7314930073662858,
+          "lower": 0.5540856086338863,
+          "upper": 0.9419849930528644,
+          "n": 32,
+          "n_clusters": 20,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "precision_at_0_5": 0.7894736842105263,
+        "recall_at_0_5": 0.75,
+        "f1_at_0_5": 0.7692307692307693
+      },
+      "R_plus_B": {
+        "features": [
+          "relevance_score",
+          "behavioral_reliance"
+        ],
+        "cv": "leave_one_question_out",
+        "n_oof": 32,
+        "skipped_folds": 0,
+        "roc_auc": {
+          "estimate": 0.5958333333333334,
+          "lower": 0.24674383587427065,
+          "upper": 0.8947368421052632,
+          "n": 32,
+          "n_clusters": 20,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "average_precision": {
+          "estimate": 0.6619392943884618,
+          "lower": 0.5078171136110113,
+          "upper": 0.9639395161290322,
+          "n": 32,
+          "n_clusters": 20,
+          "method": "question_cluster_bootstrap_on_oof_predictions"
+        },
+        "precision_at_0_5": 0.7894736842105263,
+        "recall_at_0_5": 0.75,
+        "f1_at_0_5": 0.7692307692307693
+      }
+    }
+  },
+  "h1_top_relevance_negative_U": {
+    "estimate": 0.3333333333333333,
+    "lower": 0.08333333333333333,
+    "upper": 0.5833333333333334,
+    "n": 12
+  },
+  "labels": {
+    "harmful": {
+      "n": 14,
+      "mean_relevance": 0.8144138514285714,
+      "mean_embedding_relevance": 0.8144138514285714,
+      "mean_hybrid_relevance": 0.8707870992857142,
+      "mean_B": 0.2857142857142857,
+      "mean_U": -0.014574829931972788,
+      "negative_U_rate": {
+        "estimate": 0.5,
+        "lower": 0.21428571428571427,
+        "upper": 0.7857142857142857,
+        "n": 14
+      },
+      "neutral_U_rate": {
+        "estimate": 0.42857142857142855,
+        "lower": 0.14285714285714285,
+        "upper": 0.7142857142857143,
+        "n": 14
+      }
+    },
+    "irrelevant": {
+      "n": 30,
+      "mean_relevance": 0.5541351463333334,
+      "mean_embedding_relevance": 0.5541351463333334,
+      "mean_hybrid_relevance": 0.5981342196666667,
+      "mean_B": 0.03333333333333333,
+      "mean_U": -0.00028571428571428546,
+      "negative_U_rate": {
+        "estimate": 0.16666666666666666,
+        "lower": 0.03333333333333333,
+        "upper": 0.3,
+        "n": 30
+      },
+      "neutral_U_rate": {
+        "estimate": 0.7333333333333333,
+        "lower": 0.5666666666666667,
+        "upper": 0.9,
+        "n": 30
+      }
+    },
+    "useful": {
+      "n": 16,
+      "mean_relevance": 0.743985808125,
+      "mean_embedding_relevance": 0.743985808125,
+      "mean_hybrid_relevance": 0.678390183125,
+      "mean_B": 0.96875,
+      "mean_U": 0.6159126984126984,
+      "negative_U_rate": {
+        "estimate": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "n": 16
+      },
+      "neutral_U_rate": {
+        "estimate": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "n": 16
+      }
+    }
+  },
+  "quadrants": {
+    "high_B_positive_U": {
+      "n": 15,
+      "rate": 0.25,
+      "memory_ids": [
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "gold_00"
+      ]
+    },
+    "high_B_negative_U": {
+      "n": 4,
+      "rate": 0.06666666666666667,
+      "memory_ids": [
+        "harm_00",
+        "harm_00",
+        "harm_00",
+        "harm_00"
+      ]
+    },
+    "low_B_positive_U": {
+      "n": 4,
+      "rate": 0.06666666666666667,
+      "memory_ids": [
+        "irr_02",
+        "irr_02",
+        "irr_03",
+        "harm_00"
+      ]
+    },
+    "low_B_negative_U": {
+      "n": 8,
+      "rate": 0.13333333333333333,
+      "memory_ids": [
+        "harm_00",
+        "irr_00",
+        "irr_01",
+        "harm_00",
+        "irr_03",
+        "irr_01",
+        "harm_00",
+        "irr_02"
+      ]
+    }
+  },
+  "retrieved_candidate_composition": {
+    "useful_candidate_rate": {
+      "count": 16,
+      "denominator": 60,
+      "rate": 0.26666666666666666
+    },
+    "harmful_candidate_rate": {
+      "count": 14,
+      "denominator": 60,
+      "rate": 0.23333333333333334
+    }
+  },
+  "run": {
+    "dataset": "causal_locomo_final.jsonl",
+    "config": "config/local_ollama.yaml",
+    "provider": "ollama",
+    "agent_model": "qwen2.5:latest",
+    "judge_model": "qwen2.5:latest",
+    "embedding_model": "nomic-embed-text",
+    "embedding_backend": "ollama",
+    "retrieval_metric": "hybrid",
+    "relevance_metric": "embedding",
+    "utility_scorer": "hybrid",
+    "behavior_scorer": "llm_decision_with_human_override",
+    "deterministic_only": false,
+    "rollouts": 1,
+    "top_k": 3,
+    "skipped_examples": []
+  },
+  "manual_overrides": [
+    {
+      "example_id": "conv-26_qa_0002",
+      "memory_id": "gold_00",
+      "field": "behavioral_reliance",
+      "original_value": 0.0,
+      "revised_value": 1.0,
+      "reason": "Manual review: the no-memory output declined to answer, while the with-memory output gave the correct concrete fields. Override B from 0 to 1."
+    }
+  ],
+  "analysis": {
+    "primary_correlation_ci": "question_cluster_bootstrap",
+    "prediction_cv": "leave_one_question_out",
+    "seed": 42
+  },
+  "figures": [
+    "motivation_experiment/results/qwen_enhanced_check/figures/utility_vs_reliance.png",
+    "motivation_experiment/results/qwen_enhanced_check/figures/relevance_vs_utility.png",
+    "motivation_experiment/results/qwen_enhanced_check/figures/utility_sign_prediction.png"
+  ]
+}

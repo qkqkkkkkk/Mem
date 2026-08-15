@@ -1,0 +1,181 @@
+{
+  "n_interventions": 60,
+  "n_examples": 20,
+  "thresholds": {
+    "top_relevance_quantile": 0.8,
+    "top_relevance_cutoff": 0.6510708600000001,
+    "high_B_quantile": 0.8,
+    "high_B_cutoff": 0.785176124,
+    "low_B_cutoff": 0.468815062,
+    "B_bands_separated": true,
+    "utility_epsilon": 0.0
+  },
+  "overall": {
+    "mean_R": 0.557655754,
+    "mean_B": 0.6066995486666666,
+    "mean_U": 0.0932883597883598,
+    "negative_U_rate": {
+      "estimate": 0.16666666666666666,
+      "lower": 0.0829166666666667,
+      "upper": 0.26666666666666666,
+      "n": 60
+    },
+    "neutral_U_rate": {
+      "estimate": 0.48333333333333334,
+      "lower": 0.35,
+      "upper": 0.6166666666666667,
+      "n": 60
+    },
+    "behavior_changed_rate": {
+      "estimate": 0.9833333333333333,
+      "lower": 0.95,
+      "upper": 1.0,
+      "n": 60
+    }
+  },
+  "correlations": {
+    "pearson_B_U": {
+      "estimate": -0.16301957269438277,
+      "lower": -0.41471907540407354,
+      "upper": 0.07944475441576937,
+      "n": 60
+    },
+    "spearman_B_U": {
+      "estimate": -0.07885490786282336,
+      "lower": -0.32511574100952434,
+      "upper": 0.1694580250513268,
+      "n": 60
+    },
+    "pearson_R_U": {
+      "estimate": -0.04333272494965328,
+      "lower": -0.2369455857090302,
+      "upper": 0.19461649458112948,
+      "n": 60
+    }
+  },
+  "h1_top_relevance_negative_U": {
+    "estimate": 0.3333333333333333,
+    "lower": 0.08333333333333333,
+    "upper": 0.5833333333333334,
+    "n": 12
+  },
+  "labels": {
+    "harmful": {
+      "n": 14,
+      "mean_relevance": 0.7630809842857144,
+      "mean_B": 0.48383737499999996,
+      "mean_U": -0.029149659863945576,
+      "negative_U_rate": {
+        "estimate": 0.5,
+        "lower": 0.21428571428571427,
+        "upper": 0.7857142857142857,
+        "n": 14
+      },
+      "neutral_U_rate": {
+        "estimate": 0.42857142857142855,
+        "lower": 0.14285714285714285,
+        "upper": 0.7142857142857143,
+        "n": 14
+      }
+    },
+    "irrelevant": {
+      "n": 29,
+      "mean_relevance": 0.4620183120689655,
+      "mean_B": 0.7039282158620689,
+      "mean_U": 0.0015435139573070614,
+      "negative_U_rate": {
+        "estimate": 0.10344827586206896,
+        "lower": 0.0,
+        "upper": 0.2413793103448276,
+        "n": 29
+      },
+      "neutral_U_rate": {
+        "estimate": 0.7931034482758621,
+        "lower": 0.6551724137931034,
+        "upper": 0.9310344827586207,
+        "n": 29
+      }
+    },
+    "useful": {
+      "n": 17,
+      "mean_relevance": 0.5516282594117647,
+      "mean_B": 0.5420194947058823,
+      "mean_U": 0.35062558356676005,
+      "negative_U_rate": {
+        "estimate": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "n": 17
+      },
+      "neutral_U_rate": {
+        "estimate": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "n": 17
+      }
+    }
+  },
+  "quadrants": {
+    "high_B_positive_U": {
+      "n": 3,
+      "rate": 0.05,
+      "memory_ids": [
+        "gold_00",
+        "irr_02",
+        "irr_03"
+      ]
+    },
+    "high_B_negative_U": {
+      "n": 0,
+      "rate": 0.0,
+      "memory_ids": []
+    },
+    "low_B_positive_U": {
+      "n": 6,
+      "rate": 0.1,
+      "memory_ids": [
+        "gold_00",
+        "gold_00",
+        "gold_00",
+        "harm_00",
+        "gold_00",
+        "gold_00"
+      ]
+    },
+    "low_B_negative_U": {
+      "n": 3,
+      "rate": 0.05,
+      "memory_ids": [
+        "harm_00",
+        "harm_00",
+        "harm_00"
+      ]
+    }
+  },
+  "retrieved_candidate_composition": {
+    "useful_candidate_rate": {
+      "count": 17,
+      "denominator": 60,
+      "rate": 0.2833333333333333
+    },
+    "harmful_candidate_rate": {
+      "count": 14,
+      "denominator": 60,
+      "rate": 0.23333333333333334
+    }
+  },
+  "run": {
+    "dataset": "causal_locomo_final.jsonl",
+    "config": "config/local_ollama.yaml",
+    "provider": "ollama",
+    "agent_model": "qwen2.5:latest",
+    "deterministic_only": false,
+    "rollouts": 1,
+    "top_k": 3,
+    "skipped_examples": []
+  },
+  "figures": [
+    "motivation_experiment/results/qwen_pilot_20_v2/figures/utility_vs_reliance.png",
+    "motivation_experiment/results/qwen_pilot_20_v2/figures/relevance_vs_utility.png"
+  ]
+}

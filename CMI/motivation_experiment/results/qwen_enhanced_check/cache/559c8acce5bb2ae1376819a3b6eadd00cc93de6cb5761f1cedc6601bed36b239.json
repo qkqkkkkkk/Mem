@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"concise final answer or decision\",\n  \"decision_with\": \"concise final answer or decision\",\n  \"same_decision\": true,\n  \"decision_change_score\": 0.0,\n  \"confidence\": 1.0,\n  \"explanation\": \"Both answers fail to include the required destress method 'by dancing' and introduce irrelevant information. Neither answer meets the scoring criteria.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "concise final answer or decision",
+    "decision_with": "concise final answer or decision",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 1.0,
+    "explanation": "Both answers fail to include the required destress method 'by dancing' and introduce irrelevant information. Neither answer meets the scoring criteria."
+  },
+  "usage": {
+    "input_tokens": 509,
+    "output_tokens": 108,
+    "total_tokens": 617
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 18.1844699382782,
+  "cached": false
+}

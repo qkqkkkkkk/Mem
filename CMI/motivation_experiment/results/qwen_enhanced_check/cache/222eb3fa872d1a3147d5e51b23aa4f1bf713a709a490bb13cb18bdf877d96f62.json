@@ -1,0 +1,13 @@
+{
+  "text": "Maria donated her car on 22 December 2022.",
+  "json": null,
+  "usage": {
+    "input_tokens": 99,
+    "output_tokens": 16,
+    "total_tokens": 115
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 8.616520881652832,
+  "cached": false
+}

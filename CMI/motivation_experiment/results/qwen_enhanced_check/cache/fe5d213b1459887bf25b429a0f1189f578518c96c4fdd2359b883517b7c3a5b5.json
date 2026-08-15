@@ -1,0 +1,13 @@
+{
+  "text": "Joanna first watched \"Eternal Sunshine of the Spotless Mind\" in 2020.",
+  "json": null,
+  "usage": {
+    "input_tokens": 109,
+    "output_tokens": 22,
+    "total_tokens": 131
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 9.420112133026123,
+  "cached": false
+}

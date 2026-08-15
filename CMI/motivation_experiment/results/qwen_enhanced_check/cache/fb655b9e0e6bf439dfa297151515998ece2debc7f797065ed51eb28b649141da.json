@@ -1,0 +1,13 @@
+{
+  "text": "I don't have any relevant memories about Jolene's project in January 2023.",
+  "json": null,
+  "usage": {
+    "input_tokens": 118,
+    "output_tokens": 22,
+    "total_tokens": 140
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 3.1497340202331543,
+  "cached": false
+}

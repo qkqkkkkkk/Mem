@@ -1,0 +1,13 @@
+{
+  "text": "Evan drives a Tesla Model 3.",
+  "json": null,
+  "usage": {
+    "input_tokens": 93,
+    "output_tokens": 10,
+    "total_tokens": 103
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 3.0224430561065674,
+  "cached": false
+}

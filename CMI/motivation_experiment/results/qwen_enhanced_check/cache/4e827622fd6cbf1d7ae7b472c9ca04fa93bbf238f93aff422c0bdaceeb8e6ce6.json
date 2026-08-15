@@ -1,0 +1,13 @@
+{
+  "text": "Jolene was working on a civil engineering project in the beginning of January 2023.",
+  "json": null,
+  "usage": {
+    "input_tokens": 120,
+    "output_tokens": 22,
+    "total_tokens": 142
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 11.291577100753784,
+  "cached": false
+}

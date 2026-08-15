@@ -1,0 +1,2 @@
+{"example_id": "spurious_000019", "agent_name": "cmi", "error": "RetryError[<Future at 0x10a0cbd60 state=finished raised RuntimeError>]"}
+{"example_id": "poisoned_000005", "agent_name": "cmi", "error": "RetryError[<Future at 0x10a10df90 state=finished raised RuntimeError>]"}

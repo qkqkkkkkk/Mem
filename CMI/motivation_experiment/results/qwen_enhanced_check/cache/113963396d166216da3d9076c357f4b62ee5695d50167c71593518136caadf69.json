@@ -1,0 +1,13 @@
+{
+  "text": "Melanie painted a sunrise in 2023.",
+  "json": null,
+  "usage": {
+    "input_tokens": 95,
+    "output_tokens": 13,
+    "total_tokens": 108
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 4.469794750213623,
+  "cached": false
+}

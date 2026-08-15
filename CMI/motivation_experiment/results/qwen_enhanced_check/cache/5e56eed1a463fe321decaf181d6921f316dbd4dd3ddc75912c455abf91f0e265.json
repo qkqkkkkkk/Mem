@@ -1,0 +1,13 @@
+{
+  "text": "John's goals for his career, not related to his basketball skills, include becoming a successful business leader and starting his own sports marketing company.",
+  "json": null,
+  "usage": {
+    "input_tokens": 66,
+    "output_tokens": 29,
+    "total_tokens": 95
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 9.919477939605713,
+  "cached": false
+}

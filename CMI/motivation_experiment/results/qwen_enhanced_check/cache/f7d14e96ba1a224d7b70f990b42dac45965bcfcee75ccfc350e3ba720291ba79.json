@@ -1,0 +1,13 @@
+{
+  "text": "Caroline would be likely to pursue psychology and a counseling certification in her education.",
+  "json": null,
+  "usage": {
+    "input_tokens": 112,
+    "output_tokens": 17,
+    "total_tokens": 129
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 2.588325023651123,
+  "cached": false
+}

@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"incorrect\",\n  \"decision_with\": \"incorrect\",\n  \"same_decision\": true,\n  \"decision_change_score\": 0.0,\n  \"confidence\": 0.9,\n  \"explanation\": \"Both answers fail to provide the correct information that Maria had dinner with her mother on May 3, 2023. The first answer provides incorrect information, while the second answer lacks the relevant information.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "incorrect",
+    "decision_with": "incorrect",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 0.9,
+    "explanation": "Both answers fail to provide the correct information that Maria had dinner with her mother on May 3, 2023. The first answer provides incorrect information, while the second answer lacks the relevant information."
+  },
+  "usage": {
+    "input_tokens": 499,
+    "output_tokens": 114,
+    "total_tokens": 613
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 30.339513778686523,
+  "cached": false
+}

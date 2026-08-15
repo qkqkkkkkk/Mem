@@ -1,0 +1,13 @@
+{
+  "text": "When Jon lost his job as a banker is not specified in the given information.",
+  "json": null,
+  "usage": {
+    "input_tokens": 59,
+    "output_tokens": 17,
+    "total_tokens": 76
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 9.624423027038574,
+  "cached": false
+}

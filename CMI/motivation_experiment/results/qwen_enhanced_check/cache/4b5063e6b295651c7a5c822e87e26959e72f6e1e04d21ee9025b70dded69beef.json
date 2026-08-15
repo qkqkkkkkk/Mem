@@ -1,0 +1,13 @@
+{
+  "text": "I do not have any relevant memories about Caroline going to the LGBTQ support group.",
+  "json": null,
+  "usage": {
+    "input_tokens": 98,
+    "output_tokens": 17,
+    "total_tokens": 115
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 3.5810651779174805,
+  "cached": false
+}

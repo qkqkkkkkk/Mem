@@ -1,4 +1,4 @@
-#!/Users/xiaobaobei/causal-memory-intervention/.venv/bin/python3
+#!/Users/xiaobaobei/causal-memory-intervention/CMI/.venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

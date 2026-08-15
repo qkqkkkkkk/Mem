@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"actual conclusion or NO_ANSWER\",\n  \"decision_with\": \"actual conclusion or NO_ANSWER\",\n  \"same_decision\": true,\n  \"decision_change_score\": 0.0,\n  \"confidence\": 0.0,\n  \"explanation\": \"The answer with the candidate memory fails to meet the 'must_include' criteria and provides an explanation that contradicts the provided memory and the task's expected response.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "actual conclusion or NO_ANSWER",
+    "decision_with": "actual conclusion or NO_ANSWER",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 0.0,
+    "explanation": "The answer with the candidate memory fails to meet the 'must_include' criteria and provides an explanation that contradicts the provided memory and the task's expected response."
+  },
+  "usage": {
+    "input_tokens": 669,
+    "output_tokens": 130,
+    "total_tokens": 799
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "gemma3:4b",
+  "latency_seconds": 9.023953199386597,
+  "cached": false
+}

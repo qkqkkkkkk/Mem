@@ -1,0 +1,13 @@
+{
+  "text": "2010",
+  "json": null,
+  "usage": {
+    "input_tokens": 61,
+    "output_tokens": 5,
+    "total_tokens": 66
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 30.46295976638794,
+  "cached": false
+}

@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"concise final answer or decision\",\n  \"decision_with\": \"concise final answer or decision\",\n  \"same_decision\": true,\n  \"decision_change_score\": 0.0,\n  \"confidence\": 0.9,\n  \"explanation\": \"Both answers fail to provide the required date and do not use the expected memory. They are essentially the same in their lack of relevant information.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "concise final answer or decision",
+    "decision_with": "concise final answer or decision",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 0.9,
+    "explanation": "Both answers fail to provide the required date and do not use the expected memory. They are essentially the same in their lack of relevant information."
+  },
+  "usage": {
+    "input_tokens": 541,
+    "output_tokens": 110,
+    "total_tokens": 651
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 30.12149477005005,
+  "cached": false
+}

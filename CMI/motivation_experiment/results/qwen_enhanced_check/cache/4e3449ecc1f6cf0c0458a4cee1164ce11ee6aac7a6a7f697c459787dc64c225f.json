@@ -1,0 +1,13 @@
+{
+  "text": "I do not have any relevant memories about Caroline's interests or tendencies towards specific fields of education. Therefore, I cannot provide a response based on reliable information.",
+  "json": null,
+  "usage": {
+    "input_tokens": 113,
+    "output_tokens": 32,
+    "total_tokens": 145
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 5.8732569217681885,
+  "cached": false
+}

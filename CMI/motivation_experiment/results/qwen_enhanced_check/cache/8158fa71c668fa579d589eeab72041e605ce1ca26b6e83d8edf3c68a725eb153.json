@@ -1,0 +1,13 @@
+{
+  "text": "There is no relevant information in the provided memories to answer the question about who Maria had dinner with on May 3, 2023.",
+  "json": null,
+  "usage": {
+    "input_tokens": 104,
+    "output_tokens": 31,
+    "total_tokens": 135
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 33.61992287635803,
+  "cached": false
+}

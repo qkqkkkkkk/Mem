@@ -1,0 +1,13 @@
+{
+  "text": "Unable to determine the year Audrey adopted her first three dogs based on the provided memory.",
+  "json": null,
+  "usage": {
+    "input_tokens": 103,
+    "output_tokens": 18,
+    "total_tokens": 121
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 3.9362239837646484,
+  "cached": false
+}

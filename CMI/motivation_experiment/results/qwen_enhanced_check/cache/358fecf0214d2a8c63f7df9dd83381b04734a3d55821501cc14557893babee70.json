@@ -1,0 +1,13 @@
+{
+  "text": "I don't have any relevant memories about Calvin traveling to Tokyo.",
+  "json": null,
+  "usage": {
+    "input_tokens": 102,
+    "output_tokens": 14,
+    "total_tokens": 116
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 5.600251913070679,
+  "cached": false
+}

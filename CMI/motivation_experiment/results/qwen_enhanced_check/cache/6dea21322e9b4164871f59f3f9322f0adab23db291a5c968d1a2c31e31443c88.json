@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"The answer does not provide the shared interests between Joanna and Nate as per the expected answer.\",\n  \"decision_with\": \"The answer does not provide the shared interests between Joanna and Nate as per the expected answer.\",\n  \"same_decision\": true,\n  \"decision_change_score\": 0.0,\n  \"confidence\": 0.9,\n  \"explanation\": \"Both answers fail to provide the correct shared interests of Joanna and Nate, which are watching movies and making desserts.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "The answer does not provide the shared interests between Joanna and Nate as per the expected answer.",
+    "decision_with": "The answer does not provide the shared interests between Joanna and Nate as per the expected answer.",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 0.9,
+    "explanation": "Both answers fail to provide the correct shared interests of Joanna and Nate, which are watching movies and making desserts."
+  },
+  "usage": {
+    "input_tokens": 516,
+    "output_tokens": 126,
+    "total_tokens": 642
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 22.131046056747437,
+  "cached": false
+}

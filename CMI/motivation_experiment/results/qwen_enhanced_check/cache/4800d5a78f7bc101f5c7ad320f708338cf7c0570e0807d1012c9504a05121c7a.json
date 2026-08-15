@@ -1,0 +1,13 @@
+{
+  "text": "Andrew and his girlfriend have pursued indoor activities such as playing boardgames, volunteering at a pet shelter, going to a wine tasting, and growing flowers at home.",
+  "json": null,
+  "usage": {
+    "input_tokens": 120,
+    "output_tokens": 33,
+    "total_tokens": 153
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 8.384699821472168,
+  "cached": false
+}

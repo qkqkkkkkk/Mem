@@ -1,0 +1,13 @@
+{
+  "text": "Jolene was working on a marketing campaign project in the beginning of January 2023.",
+  "json": null,
+  "usage": {
+    "input_tokens": 70,
+    "output_tokens": 22,
+    "total_tokens": 92
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 11.884993076324463,
+  "cached": false
+}

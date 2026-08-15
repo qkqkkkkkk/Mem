@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 1.0,\n  \"decision_without\": \"incorrect\",\n  \"decision_with\": \"correct\",\n  \"same_decision\": false,\n  \"decision_change_score\": 1.0,\n  \"confidence\": 1.0,\n  \"explanation\": \"The 'without' answer incorrectly states Maria had dinner with John, while the 'with' answer correctly states she had dinner with her mother. The 'with' answer aligns with the expected answer and scoring criteria.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 1.0,
+    "decision_without": "incorrect",
+    "decision_with": "correct",
+    "same_decision": false,
+    "decision_change_score": 1.0,
+    "confidence": 1.0,
+    "explanation": "The 'without' answer incorrectly states Maria had dinner with John, while the 'with' answer correctly states she had dinner with her mother. The 'with' answer aligns with the expected answer and scoring criteria."
+  },
+  "usage": {
+    "input_tokens": 486,
+    "output_tokens": 115,
+    "total_tokens": 601
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 22.13341212272644,
+  "cached": false
+}

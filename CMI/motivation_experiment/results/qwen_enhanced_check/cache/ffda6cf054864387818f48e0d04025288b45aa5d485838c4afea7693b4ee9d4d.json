@@ -1,0 +1,13 @@
+{
+  "text": "Based on the information provided, it is likely that Nate has friends besides Joanna, but without more context, it's impossible to determine the exact number or identity of those friends.",
+  "json": null,
+  "usage": {
+    "input_tokens": 59,
+    "output_tokens": 36,
+    "total_tokens": 95
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 11.260889053344727,
+  "cached": false
+}

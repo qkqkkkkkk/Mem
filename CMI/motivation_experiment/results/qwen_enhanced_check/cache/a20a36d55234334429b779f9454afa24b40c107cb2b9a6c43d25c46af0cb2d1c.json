@@ -1,0 +1,13 @@
+{
+  "text": "Based on the provided memories, there is no information about John's career goals that are not related to his basketball skills. Therefore, I cannot provide any specific goals for John in his career.",
+  "json": null,
+  "usage": {
+    "input_tokens": 113,
+    "output_tokens": 39,
+    "total_tokens": 152
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 4.867733001708984,
+  "cached": false
+}

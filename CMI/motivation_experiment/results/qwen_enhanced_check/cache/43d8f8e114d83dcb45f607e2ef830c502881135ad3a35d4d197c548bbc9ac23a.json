@@ -1,0 +1,13 @@
+{
+  "text": "The information provided does not include a specific date for when Maria donated her car. More context or details are needed to answer this question accurately.",
+  "json": null,
+  "usage": {
+    "input_tokens": 56,
+    "output_tokens": 29,
+    "total_tokens": 85
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 10.052510023117065,
+  "cached": false
+}

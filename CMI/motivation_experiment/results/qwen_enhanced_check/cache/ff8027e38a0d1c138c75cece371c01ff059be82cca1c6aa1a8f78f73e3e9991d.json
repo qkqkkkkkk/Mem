@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.8,\n  \"decision_without\": \"incorrect\",\n  \"decision_with\": \"partially correct\",\n  \"same_decision\": false,\n  \"decision_change_score\": 0.5,\n  \"confidence\": 0.9,\n  \"explanation\": \"The first answer misses several key activities (volunteering, wine tasting, growing flowers) and includes irrelevant activities (movie nights, cooking). The second answer includes all the required activities but omits 'growing flowers' and includes 'playing' which is not as specific as 'boardgames'.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.8,
+    "decision_without": "incorrect",
+    "decision_with": "partially correct",
+    "same_decision": false,
+    "decision_change_score": 0.5,
+    "confidence": 0.9,
+    "explanation": "The first answer misses several key activities (volunteering, wine tasting, growing flowers) and includes irrelevant activities (movie nights, cooking). The second answer includes all the required activities but omits 'growing flowers' and includes 'playing' which is not as specific as 'boardgames'."
+  },
+  "usage": {
+    "input_tokens": 586,
+    "output_tokens": 134,
+    "total_tokens": 720
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 28.21542501449585,
+  "cached": false
+}

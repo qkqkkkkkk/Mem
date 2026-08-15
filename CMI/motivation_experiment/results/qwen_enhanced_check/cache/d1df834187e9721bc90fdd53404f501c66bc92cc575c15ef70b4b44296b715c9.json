@@ -1,0 +1,13 @@
+{
+  "text": "Andrew started his new job as a financial analyst the week before March 27, 2023.",
+  "json": null,
+  "usage": {
+    "input_tokens": 152,
+    "output_tokens": 24,
+    "total_tokens": 176
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 12.172106981277466,
+  "cached": false
+}

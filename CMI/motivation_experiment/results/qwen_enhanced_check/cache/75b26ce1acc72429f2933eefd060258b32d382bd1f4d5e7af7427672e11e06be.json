@@ -1,0 +1,13 @@
+{
+  "text": "I do not have any relevant memories to answer when Andrew started his new job as a financial analyst.",
+  "json": null,
+  "usage": {
+    "input_tokens": 97,
+    "output_tokens": 21,
+    "total_tokens": 118
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 4.12109899520874,
+  "cached": false
+}

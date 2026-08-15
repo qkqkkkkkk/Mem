@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"incorrect\",\n  \"decision_with\": \"incorrect\",\n  \"same_decision\": true,\n  \"decision_change_score\": 0.0,\n  \"confidence\": 0.9,\n  \"explanation\": \"Both answers are incorrect as they do not provide the exact date of 21 December 2022. The answer with the candidate memory also includes an incorrect date.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "incorrect",
+    "decision_with": "incorrect",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 0.9,
+    "explanation": "Both answers are incorrect as they do not provide the exact date of 21 December 2022. The answer with the candidate memory also includes an incorrect date."
+  },
+  "usage": {
+    "input_tokens": 543,
+    "output_tokens": 107,
+    "total_tokens": 650
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 24.75251293182373,
+  "cached": false
+}

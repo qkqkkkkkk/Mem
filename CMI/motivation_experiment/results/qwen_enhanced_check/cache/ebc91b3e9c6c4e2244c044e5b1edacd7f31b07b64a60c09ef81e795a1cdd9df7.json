@@ -1,0 +1,13 @@
+{
+  "text": "I don't have any relevant memories to answer when Gina has lost her job at DoorDash.",
+  "json": null,
+  "usage": {
+    "input_tokens": 95,
+    "output_tokens": 20,
+    "total_tokens": 115
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 3.064405918121338,
+  "cached": false
+}

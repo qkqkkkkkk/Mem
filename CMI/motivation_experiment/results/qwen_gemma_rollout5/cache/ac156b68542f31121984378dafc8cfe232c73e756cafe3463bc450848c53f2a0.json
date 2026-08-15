@@ -1,0 +1,13 @@
+{
+  "text": "The information provided does not include a specific date for when Caroline went to the LGBTQ support group.",
+  "json": null,
+  "usage": {
+    "input_tokens": 59,
+    "output_tokens": 20,
+    "total_tokens": 79
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 13.368244171142578,
+  "cached": false
+}

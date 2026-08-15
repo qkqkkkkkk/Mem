@@ -1,0 +1,13 @@
+{
+  "text": "James was bowling on March 16, 2022.",
+  "json": null,
+  "usage": {
+    "input_tokens": 123,
+    "output_tokens": 16,
+    "total_tokens": 139
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 4.966434001922607,
+  "cached": false
+}

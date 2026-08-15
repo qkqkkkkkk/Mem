@@ -1,0 +1,13 @@
+{
+  "text": "Based on the provided memories, there is no information about indoor activities Andrew has pursued with his girlfriend. The only memory mentions a picnic in nature, which is an outdoor activity. Therefore, I cannot provide a relevant response to the current question.",
+  "json": null,
+  "usage": {
+    "input_tokens": 104,
+    "output_tokens": 49,
+    "total_tokens": 153
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 11.611232042312622,
+  "cached": false
+}

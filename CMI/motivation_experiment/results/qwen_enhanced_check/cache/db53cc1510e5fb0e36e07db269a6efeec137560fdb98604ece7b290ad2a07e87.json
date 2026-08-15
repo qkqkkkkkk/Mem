@@ -1,0 +1,22 @@
+{
+  "text": "{\n  \"score_without\": 0.0,\n  \"score_with\": 0.0,\n  \"decision_without\": \"The answer does not include the required career goals and is off-topic.\",\n  \"decision_with\": \"The answer is missing the required career goals and is off-topic.\",\n  \"same_decision\": true,\n  \"decision_change_score\": 0.0,\n  \"confidence\": 1.0,\n  \"explanation\": \"Both answers fail to include the specified career goals and are not relevant to the task.\"\n}",
+  "json": {
+    "score_without": 0.0,
+    "score_with": 0.0,
+    "decision_without": "The answer does not include the required career goals and is off-topic.",
+    "decision_with": "The answer is missing the required career goals and is off-topic.",
+    "same_decision": true,
+    "decision_change_score": 0.0,
+    "confidence": 1.0,
+    "explanation": "Both answers fail to include the specified career goals and are not relevant to the task."
+  },
+  "usage": {
+    "input_tokens": 585,
+    "output_tokens": 112,
+    "total_tokens": 697
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 26.72503089904785,
+  "cached": false
+}

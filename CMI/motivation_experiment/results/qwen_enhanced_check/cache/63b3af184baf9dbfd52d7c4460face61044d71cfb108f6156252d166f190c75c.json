@@ -1,0 +1,13 @@
+{
+  "text": "Joanna and Nate share interests in video games and hiking.",
+  "json": null,
+  "usage": {
+    "input_tokens": 100,
+    "output_tokens": 13,
+    "total_tokens": 113
+  },
+  "estimated_cost_usd": 0.0,
+  "model": "qwen2.5:latest",
+  "latency_seconds": 2.5219790935516357,
+  "cached": false
+}
