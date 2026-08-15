@@ -14,6 +14,7 @@ from motivation_experiment.run_pilot import (
     summarize,
     write_human_annotation_template,
 )
+from src.api.openai_client import OpenAIClient
 from src.memory.memory_card import MemoryCard
 
 
@@ -41,6 +42,22 @@ class FakeJudgeClient:
         }
 
 
+class FakeSoftMismatchJudgeClient:
+    def complete(self, *args, **kwargs):
+        return {
+            "json": {
+                "score_without": 0.5,
+                "score_with": 0.6,
+                "decision_without": "recommend option A",
+                "decision_with": "recommend option A with a material caveat",
+                "same_decision": True,
+                "decision_change_score": 0.2,
+                "confidence": 0.8,
+                "explanation": "The recommendation changed partially.",
+            }
+        }
+
+
 def test_embedding_relevance_is_separate_from_hybrid_relevance():
     memory = MemoryCard(
         memory_id="m1",
@@ -64,6 +81,34 @@ def test_embedding_relevance_is_separate_from_hybrid_relevance():
         "lexical_relevance",
         "recency_relevance",
     }
+
+
+def test_ollama_embedding_retries_cached_deterministic_fallback(tmp_path: Path, monkeypatch):
+    client = OpenAIClient(
+        cache_dir=str(tmp_path / "cache"),
+        use_cache=True,
+        use_api=True,
+        provider="ollama",
+        base_url="http://127.0.0.1:11434",
+    )
+    texts = ["query"]
+    model = "nomic-embed-text"
+    payload = {
+        "kind": "embedding",
+        "provider": "ollama",
+        "use_api": True,
+        "base_url": "http://127.0.0.1:11434",
+        "model": model,
+        "texts": texts,
+    }
+    client.cache.set(payload, {"embeddings": [[0.0, 1.0]], "backend": "deterministic_fallback"})
+    monkeypatch.setattr(client, "_embed_ollama", lambda requested_texts, requested_model: [[1.0, 0.0]])
+
+    embeddings = client.embed(texts, model=model)
+
+    assert embeddings == [[1.0, 0.0]]
+    assert client.last_embedding_backend == "ollama"
+    assert client.cache.get(payload)["backend"] == "ollama"
 
 
 def test_constant_metrics_are_neutral_and_correlation_is_undefined():
@@ -152,6 +197,28 @@ def test_judge_rejects_no_answer_concrete_answer_as_same_decision():
 
     assert result["valid"] is False
     assert "same_decision=true conflicts with NO_ANSWER versus a concrete decision" in result["validation_errors"]
+
+
+def test_judge_normalizes_redundant_same_decision_mismatch():
+    example = SimpleNamespace(
+        current_task=SimpleNamespace(instruction="Choose an option"),
+        gold_behavior="Recommend the best option",
+        scoring_criteria={"expected_answer": "option A"},
+    )
+
+    result = judge_intervention_pair(
+        FakeSoftMismatchJudgeClient(),
+        {"openai": {"agent_model": "qwen", "judge_model": "gemma"}},
+        example,
+        "Choose option A.",
+        "Choose option A, but only under condition X.",
+    )
+
+    assert result["valid"] is True
+    assert result["reported_same_decision"] is True
+    assert result["same_decision"] is False
+    assert result["decision_change_score"] == 0.2
+    assert result["normalization_warnings"]
 
 
 def test_cluster_bootstrap_keeps_question_interventions_together():

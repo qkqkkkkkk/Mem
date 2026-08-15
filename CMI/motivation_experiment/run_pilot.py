@@ -179,8 +179,9 @@ Scores and confidence must be in [0,1]. decision_change_score is 0 for the same 
         metadata=metadata,
     )
     data = result.get("json") or {}
-    same_decision = _parse_bool(data.get("same_decision"), False)
-    decision_change = _bounded_score(data.get("decision_change_score"), 0.0 if same_decision else 1.0)
+    reported_same_decision = _parse_bool(data.get("same_decision"), False)
+    decision_change = _bounded_score(data.get("decision_change_score"), 0.0 if reported_same_decision else 1.0)
+    same_decision = bool(decision_change is not None and decision_change <= 0.05)
     decision_without = str(data.get("decision_without", ""))
     decision_with = str(data.get("decision_with", ""))
     copied_placeholders = {
@@ -188,27 +189,30 @@ Scores and confidence must be in [0,1]. decision_change_score is 0 for the same 
         "actual conclusion or NO_ANSWER",
     }
     validation_errors: list[str] = []
+    normalization_warnings: list[str] = []
     if decision_without.strip() in copied_placeholders or decision_with.strip() in copied_placeholders:
         validation_errors.append("judge copied a decision-field placeholder")
     without_is_no_answer = decision_without.strip().upper() == "NO_ANSWER"
     with_is_no_answer = decision_with.strip().upper() == "NO_ANSWER"
     if same_decision and without_is_no_answer != with_is_no_answer:
         validation_errors.append("same_decision=true conflicts with NO_ANSWER versus a concrete decision")
-    if same_decision and decision_change is not None and decision_change > 0.05:
-        validation_errors.append("same_decision=true conflicts with a nonzero decision_change_score")
-    if not same_decision and decision_change == 0.0:
-        validation_errors.append("same_decision=false conflicts with decision_change_score=0")
+    if reported_same_decision != same_decision:
+        normalization_warnings.append(
+            "reported same_decision was normalized from decision_change_score"
+        )
     return {
         "score_without": _bounded_score(data.get("score_without"), 0.0),
         "score_with": _bounded_score(data.get("score_with"), 0.0),
         "decision_without": decision_without,
         "decision_with": decision_with,
         "same_decision": same_decision,
+        "reported_same_decision": reported_same_decision,
         "decision_change_score": decision_change,
         "confidence": _bounded_score(data.get("confidence"), 0.0),
         "explanation": str(data.get("explanation", "")),
         "valid": not validation_errors,
         "validation_errors": validation_errors,
+        "normalization_warnings": normalization_warnings,
     }
 
 
@@ -1009,6 +1013,7 @@ def run(args: argparse.Namespace) -> Path:
                     "human_notes": annotation.get("human_notes", "") if annotation else "",
                     "llm_judgments": judge_results,
                     "invalid_judge_count": len(invalid_judgments),
+                    "judge_warning_count": sum(len(result.get("normalization_warnings", [])) for result in judge_results),
                     "stability": stability,
                     "no_memory_outputs": no_texts,
                     "with_memory_outputs": with_texts,
@@ -1036,6 +1041,7 @@ def run(args: argparse.Namespace) -> Path:
         "rollouts": args.rollouts,
         "generation_temperature": generation_temperature,
         "invalid_judge_count": sum(int(row.get("invalid_judge_count", 0)) for row in rows),
+        "judge_warning_count": sum(int(row.get("judge_warning_count", 0)) for row in rows),
         "top_k": args.top_k,
         "skipped_examples": skipped,
     }

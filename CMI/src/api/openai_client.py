@@ -258,8 +258,14 @@ class OpenAIClient:
         }
         cached = self.cache.get(payload)
         if cached is not None:
-            self.last_embedding_backend = cached.get("backend", "cached_unknown")
-            return cached["embeddings"]
+            cached_backend = cached.get("backend", "cached_unknown")
+            # A transient Ollama/model failure must not permanently poison the
+            # neural-embedding cache. Retry live backends for fallback/legacy
+            # entries and overwrite the cache when the provider recovers.
+            should_retry_live = self.use_api and cached_backend in {"cached_unknown", "deterministic_fallback"}
+            if not should_retry_live:
+                self.last_embedding_backend = cached_backend
+                return cached["embeddings"]
         if self.use_api and self.provider == "ollama":
             try:
                 embeddings = self._embed_ollama(texts, model)
@@ -274,7 +280,8 @@ class OpenAIClient:
         else:
             embeddings = [deterministic_embedding(text) for text in texts]
             self.last_embedding_backend = "deterministic_fallback"
-        self.cache.set(payload, {"embeddings": embeddings, "backend": self.last_embedding_backend})
+        if self.last_embedding_backend != "deterministic_fallback":
+            self.cache.set(payload, {"embeddings": embeddings, "backend": self.last_embedding_backend})
         return embeddings
 
     @_retry_decorator()
