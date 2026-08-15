@@ -7,3 +7,9 @@ __pycache__/
 causalmem/
 .deps/
 instructions.md
+
+# 新增：忽略实验缓存与输出
+**/cache/
+**/results/**/cache/
+*.log
+
