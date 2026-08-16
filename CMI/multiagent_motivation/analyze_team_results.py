@@ -101,8 +101,15 @@ def _distribution(rows: list[dict[str, Any]], key: str) -> dict[str, Any]:
     }
 
 
-def analyze(input_dir: Path, output_dir: Path, epsilon: float, seed: int, n_bootstrap: int) -> dict[str, Any]:
-    path = input_dir / "team_interventions.jsonl"
+def analyze(
+    input_dir: Path,
+    output_dir: Path,
+    epsilon: float,
+    seed: int,
+    n_bootstrap: int,
+    input_filename: str = "team_interventions.jsonl",
+) -> dict[str, Any]:
+    path = input_dir / input_filename
     rows = [json.loads(line) for line in path.open(encoding="utf-8") if line.strip()]
     output_dir.mkdir(parents=True, exist_ok=True)
     completed_rows: list[dict[str, Any]] = []

@@ -1,0 +1,104 @@
+{
+  "mode": "oracle",
+  "utility_scorer": "deterministic",
+  "n_cases": 8,
+  "expected_structural_mismatch_cases": 8,
+  "expected_standard_answer_mismatch_cases": 4,
+  "expected_resource_only_cases": 4,
+  "standard_detected_cases": 4,
+  "structural_detected_cases": 8,
+  "standard_recall_on_answer_cases": 1.0,
+  "structural_recall_on_all_cases": 1.0,
+  "resource_case_standard_detection": 0,
+  "resource_case_adjusted_detection": 4,
+  "cases": [
+    {
+      "case_id": "correction_date",
+      "case_type": "synthesizer_correction",
+      "expected_standard_mismatch": true,
+      "expected_structural_mismatch": true,
+      "local_utility": -1.0,
+      "team_utility": 0.6666666666666667,
+      "resource_adjusted_team_utility": 0.6666666666666667,
+      "standard_mismatch_detected": true,
+      "structural_mismatch_detected": true
+    },
+    {
+      "case_id": "correction_numeric",
+      "case_type": "synthesizer_correction",
+      "expected_standard_mismatch": true,
+      "expected_structural_mismatch": true,
+      "local_utility": -1.0,
+      "team_utility": 0.6666666666666667,
+      "resource_adjusted_team_utility": 0.6666666666666667,
+      "standard_mismatch_detected": true,
+      "structural_mismatch_detected": true
+    },
+    {
+      "case_id": "correction_recommendation",
+      "case_type": "synthesizer_correction",
+      "expected_standard_mismatch": true,
+      "expected_structural_mismatch": true,
+      "local_utility": -1.0,
+      "team_utility": 0.6666666666666667,
+      "resource_adjusted_team_utility": 0.6666666666666667,
+      "standard_mismatch_detected": true,
+      "structural_mismatch_detected": true
+    },
+    {
+      "case_id": "correction_identity",
+      "case_type": "synthesizer_correction",
+      "expected_standard_mismatch": true,
+      "expected_structural_mismatch": true,
+      "local_utility": -1.0,
+      "team_utility": 0.6666666666666667,
+      "resource_adjusted_team_utility": 0.6666666666666667,
+      "standard_mismatch_detected": true,
+      "structural_mismatch_detected": true
+    },
+    {
+      "case_id": "resource_verification_date",
+      "case_type": "resource_cost",
+      "expected_standard_mismatch": false,
+      "expected_structural_mismatch": true,
+      "local_utility": 1.0,
+      "team_utility": 1.0,
+      "resource_adjusted_team_utility": -0.5,
+      "standard_mismatch_detected": false,
+      "structural_mismatch_detected": true
+    },
+    {
+      "case_id": "resource_tool_call",
+      "case_type": "resource_cost",
+      "expected_standard_mismatch": false,
+      "expected_structural_mismatch": true,
+      "local_utility": 1.0,
+      "team_utility": 1.0,
+      "resource_adjusted_team_utility": -0.5,
+      "standard_mismatch_detected": false,
+      "structural_mismatch_detected": true
+    },
+    {
+      "case_id": "resource_review",
+      "case_type": "resource_cost",
+      "expected_standard_mismatch": false,
+      "expected_structural_mismatch": true,
+      "local_utility": 1.0,
+      "team_utility": 1.0,
+      "resource_adjusted_team_utility": -0.5,
+      "standard_mismatch_detected": false,
+      "structural_mismatch_detected": true
+    },
+    {
+      "case_id": "resource_latency",
+      "case_type": "resource_cost",
+      "expected_standard_mismatch": false,
+      "expected_structural_mismatch": true,
+      "local_utility": 1.0,
+      "team_utility": 1.0,
+      "resource_adjusted_team_utility": -0.5,
+      "standard_mismatch_detected": false,
+      "structural_mismatch_detected": true
+    }
+  ]
+}

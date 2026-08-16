@@ -1,0 +1,10 @@
+metric,estimate,lower,upper,n,n_clusters,task_family
+mismatch_rate,0.20588235294117646,0.1111111111111111,0.3225806451612903,68,28,
+local_positive_team_nonpositive,0.07352941176470588,0.015151515151515152,0.15,68,28,
+local_nonpositive_team_positive,0.1323529411764706,0.05555555555555555,0.23333333333333334,68,28,
+pearson_local_team_utility,-0.26928398040299567,-0.6051840092308016,0.206568765486118,68,28,
+mismatch_rate,0.1111111111111111,0.0,0.3333333333333333,9,3,inferential_memory_qa
+mismatch_rate,0.13333333333333333,0.0,0.4,15,5,multi_evidence_memory_qa
+mismatch_rate,1.0,1.0,1.0,4,4,synthetic_correction
+mismatch_rate,1.0,1.0,1.0,4,4,synthetic_resource_cost
+mismatch_rate,0.08333333333333333,0.0,0.16666666666666666,36,12,temporal_memory_qa

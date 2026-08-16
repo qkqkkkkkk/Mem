@@ -1,0 +1,427 @@
+{
+  "n_real": 60,
+  "n_synthetic": 8,
+  "n_total": 68,
+  "real_source": "multiagent_motivation/results/qwen_llama_team_rollout5_same_judge",
+  "synthetic_source": "multiagent_motivation/synthetic_diagnostic/results/oracle",
+  "answer_only_summary": {
+    "n_interventions": 68,
+    "n_examples": 28,
+    "epsilon": 0.0,
+    "local_utility": {
+      "mean": 0.13841295974430254,
+      "sd": 0.43643660910869153,
+      "min": -1.0,
+      "max": 1.0,
+      "n_positive": 25,
+      "n_nonpositive": 43
+    },
+    "team_utility": {
+      "mean": 0.1739565739272116,
+      "sd": 0.30547988758808986,
+      "min": -0.08571428571428572,
+      "max": 1.0,
+      "n_positive": 33,
+      "n_nonpositive": 35
+    },
+    "mismatch_rate": {
+      "estimate": 0.14705882352941177,
+      "lower": 0.06944444444444445,
+      "upper": 0.24285714285714285,
+      "n": 68,
+      "n_clusters": 28,
+      "method": "question_cluster_bootstrap"
+    },
+    "mismatch_directions": {
+      "local_positive_team_nonpositive": {
+        "estimate": 0.014705882352941176,
+        "lower": 0.0,
+        "upper": 0.04838709677419355,
+        "n": 68,
+        "n_clusters": 28,
+        "method": "question_cluster_bootstrap"
+      },
+      "local_nonpositive_team_positive": {
+        "estimate": 0.1323529411764706,
+        "lower": 0.05555555555555555,
+        "upper": 0.23333333333333334,
+        "n": 68,
+        "n_clusters": 28,
+        "method": "question_cluster_bootstrap"
+      }
+    },
+    "contingency_table": {
+      "local_positive_team_positive": 24,
+      "local_positive_team_nonpositive": 1,
+      "local_nonpositive_team_positive": 9,
+      "local_nonpositive_team_nonpositive": 34
+    },
+    "correlations": {
+      "pearson_local_team_utility": {
+        "estimate": 0.33349381013369617,
+        "lower": -0.06720367771707401,
+        "upper": 0.741849127872476,
+        "n": 68,
+        "n_clusters": 28,
+        "method": "question_cluster_bootstrap"
+      }
+    },
+    "task_family": {
+      "inferential_memory_qa": {
+        "n": 9,
+        "n_questions": 3,
+        "mismatch_rate": {
+          "estimate": 0.1111111111111111,
+          "lower": 0.0,
+          "upper": 0.3333333333333333,
+          "n": 9,
+          "n_clusters": 3,
+          "method": "question_cluster_bootstrap"
+        },
+        "local_utility": {
+          "mean": 0.10574074074074075,
+          "sd": 0.2051664652511439,
+          "min": -0.010000000000000009,
+          "max": 0.5650000000000001,
+          "n_positive": 3,
+          "n_nonpositive": 6
+        },
+        "team_utility": {
+          "mean": 0.06839498758067822,
+          "sd": 0.19260558894987917,
+          "min": -0.042188923651720556,
+          "max": 0.5941818181818181,
+          "n_positive": 2,
+          "n_nonpositive": 7
+        }
+      },
+      "multi_evidence_memory_qa": {
+        "n": 15,
+        "n_questions": 5,
+        "mismatch_rate": {
+          "estimate": 0.13333333333333333,
+          "lower": 0.0,
+          "upper": 0.4,
+          "n": 15,
+          "n_clusters": 5,
+          "method": "question_cluster_bootstrap"
+        },
+        "local_utility": {
+          "mean": 0.11786890957099684,
+          "sd": 0.2562813956108664,
+          "min": -0.06666666666666668,
+          "max": 0.7,
+          "n_positive": 5,
+          "n_nonpositive": 10
+        },
+        "team_utility": {
+          "mean": 0.11529159136355574,
+          "sd": 0.24108572885771903,
+          "min": -0.06666666666666668,
+          "max": 0.7,
+          "n_positive": 7,
+          "n_nonpositive": 8
+        }
+      },
+      "synthetic_correction": {
+        "n": 4,
+        "n_questions": 4,
+        "mismatch_rate": {
+          "estimate": 1.0,
+          "lower": 1.0,
+          "upper": 1.0,
+          "n": 4,
+          "n_clusters": 4,
+          "method": "question_cluster_bootstrap"
+        },
+        "local_utility": {
+          "mean": -1.0,
+          "sd": 0.0,
+          "min": -1.0,
+          "max": -1.0,
+          "n_positive": 0,
+          "n_nonpositive": 4
+        },
+        "team_utility": {
+          "mean": 0.6666666666666667,
+          "sd": 0.0,
+          "min": 0.6666666666666667,
+          "max": 0.6666666666666667,
+          "n_positive": 4,
+          "n_nonpositive": 0
+        }
+      },
+      "synthetic_resource_cost": {
+        "n": 4,
+        "n_questions": 4,
+        "mismatch_rate": {
+          "estimate": 0.0,
+          "lower": 0.0,
+          "upper": 0.0,
+          "n": 4,
+          "n_clusters": 4,
+          "method": "question_cluster_bootstrap"
+        },
+        "local_utility": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "n_positive": 4,
+          "n_nonpositive": 0
+        },
+        "team_utility": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "n_positive": 4,
+          "n_nonpositive": 0
+        }
+      },
+      "temporal_memory_qa": {
+        "n": 36,
+        "n_questions": 12,
+        "mismatch_rate": {
+          "estimate": 0.08333333333333333,
+          "lower": 0.0,
+          "upper": 0.16666666666666666,
+          "n": 36,
+          "n_clusters": 12,
+          "method": "question_cluster_bootstrap"
+        },
+        "local_utility": {
+          "mean": 0.1858994708994709,
+          "sd": 0.30450351827225847,
+          "min": -0.08571428571428572,
+          "max": 0.75,
+          "n_positive": 13,
+          "n_nonpositive": 23
+        },
+        "team_utility": {
+          "mean": 0.07826254449178555,
+          "sd": 0.16312000533847928,
+          "min": -0.08571428571428572,
+          "max": 0.7571428571428571,
+          "n_positive": 16,
+          "n_nonpositive": 20
+        }
+      }
+    },
+    "case_counts": {
+      "all_mismatches": 10,
+      "local_positive_team_nonpositive": 1,
+      "local_nonpositive_team_positive": 9
+    }
+  },
+  "structural_summary": {
+    "n_interventions": 68,
+    "n_examples": 28,
+    "epsilon": 0.0,
+    "local_utility": {
+      "mean": 0.13841295974430254,
+      "sd": 0.43643660910869153,
+      "min": -1.0,
+      "max": 1.0,
+      "n_positive": 25,
+      "n_nonpositive": 43
+    },
+    "team_utility": {
+      "mean": 0.08572127980956451,
+      "sd": 0.2685387615639728,
+      "min": -0.5,
+      "max": 0.7571428571428571,
+      "n_positive": 29,
+      "n_nonpositive": 39
+    },
+    "mismatch_rate": {
+      "estimate": 0.20588235294117646,
+      "lower": 0.1111111111111111,
+      "upper": 0.3225806451612903,
+      "n": 68,
+      "n_clusters": 28,
+      "method": "question_cluster_bootstrap"
+    },
+    "mismatch_directions": {
+      "local_positive_team_nonpositive": {
+        "estimate": 0.07352941176470588,
+        "lower": 0.015151515151515152,
+        "upper": 0.15,
+        "n": 68,
+        "n_clusters": 28,
+        "method": "question_cluster_bootstrap"
+      },
+      "local_nonpositive_team_positive": {
+        "estimate": 0.1323529411764706,
+        "lower": 0.05555555555555555,
+        "upper": 0.23333333333333334,
+        "n": 68,
+        "n_clusters": 28,
+        "method": "question_cluster_bootstrap"
+      }
+    },
+    "contingency_table": {
+      "local_positive_team_positive": 20,
+      "local_positive_team_nonpositive": 5,
+      "local_nonpositive_team_positive": 9,
+      "local_nonpositive_team_nonpositive": 34
+    },
+    "correlations": {
+      "pearson_local_team_utility": {
+        "estimate": -0.26928398040299567,
+        "lower": -0.6051840092308016,
+        "upper": 0.206568765486118,
+        "n": 68,
+        "n_clusters": 28,
+        "method": "question_cluster_bootstrap"
+      }
+    },
+    "task_family": {
+      "inferential_memory_qa": {
+        "n": 9,
+        "n_questions": 3,
+        "mismatch_rate": {
+          "estimate": 0.1111111111111111,
+          "lower": 0.0,
+          "upper": 0.3333333333333333,
+          "n": 9,
+          "n_clusters": 3,
+          "method": "question_cluster_bootstrap"
+        },
+        "local_utility": {
+          "mean": 0.10574074074074075,
+          "sd": 0.2051664652511439,
+          "min": -0.010000000000000009,
+          "max": 0.5650000000000001,
+          "n_positive": 3,
+          "n_nonpositive": 6
+        },
+        "team_utility": {
+          "mean": 0.06839498758067822,
+          "sd": 0.19260558894987917,
+          "min": -0.042188923651720556,
+          "max": 0.5941818181818181,
+          "n_positive": 2,
+          "n_nonpositive": 7
+        }
+      },
+      "multi_evidence_memory_qa": {
+        "n": 15,
+        "n_questions": 5,
+        "mismatch_rate": {
+          "estimate": 0.13333333333333333,
+          "lower": 0.0,
+          "upper": 0.4,
+          "n": 15,
+          "n_clusters": 5,
+          "method": "question_cluster_bootstrap"
+        },
+        "local_utility": {
+          "mean": 0.11786890957099684,
+          "sd": 0.2562813956108664,
+          "min": -0.06666666666666668,
+          "max": 0.7,
+          "n_positive": 5,
+          "n_nonpositive": 10
+        },
+        "team_utility": {
+          "mean": 0.11529159136355574,
+          "sd": 0.24108572885771903,
+          "min": -0.06666666666666668,
+          "max": 0.7,
+          "n_positive": 7,
+          "n_nonpositive": 8
+        }
+      },
+      "synthetic_correction": {
+        "n": 4,
+        "n_questions": 4,
+        "mismatch_rate": {
+          "estimate": 1.0,
+          "lower": 1.0,
+          "upper": 1.0,
+          "n": 4,
+          "n_clusters": 4,
+          "method": "question_cluster_bootstrap"
+        },
+        "local_utility": {
+          "mean": -1.0,
+          "sd": 0.0,
+          "min": -1.0,
+          "max": -1.0,
+          "n_positive": 0,
+          "n_nonpositive": 4
+        },
+        "team_utility": {
+          "mean": 0.6666666666666667,
+          "sd": 0.0,
+          "min": 0.6666666666666667,
+          "max": 0.6666666666666667,
+          "n_positive": 4,
+          "n_nonpositive": 0
+        }
+      },
+      "synthetic_resource_cost": {
+        "n": 4,
+        "n_questions": 4,
+        "mismatch_rate": {
+          "estimate": 1.0,
+          "lower": 1.0,
+          "upper": 1.0,
+          "n": 4,
+          "n_clusters": 4,
+          "method": "question_cluster_bootstrap"
+        },
+        "local_utility": {
+          "mean": 1.0,
+          "sd": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "n_positive": 4,
+          "n_nonpositive": 0
+        },
+        "team_utility": {
+          "mean": -0.5,
+          "sd": 0.0,
+          "min": -0.5,
+          "max": -0.5,
+          "n_positive": 0,
+          "n_nonpositive": 4
+        }
+      },
+      "temporal_memory_qa": {
+        "n": 36,
+        "n_questions": 12,
+        "mismatch_rate": {
+          "estimate": 0.08333333333333333,
+          "lower": 0.0,
+          "upper": 0.16666666666666666,
+          "n": 36,
+          "n_clusters": 12,
+          "method": "question_cluster_bootstrap"
+        },
+        "local_utility": {
+          "mean": 0.1858994708994709,
+          "sd": 0.30450351827225847,
+          "min": -0.08571428571428572,
+          "max": 0.75,
+          "n_positive": 13,
+          "n_nonpositive": 23
+        },
+        "team_utility": {
+          "mean": 0.07826254449178555,
+          "sd": 0.16312000533847928,
+          "min": -0.08571428571428572,
+          "max": 0.7571428571428571,
+          "n_positive": 16,
+          "n_nonpositive": 20
+        }
+      }
+    },
+    "case_counts": {
+      "all_mismatches": 14,
+      "local_positive_team_nonpositive": 5,
+      "local_nonpositive_team_positive": 9
+    }
+  }
+}
