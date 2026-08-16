@@ -1,0 +1,19 @@
+{
+  "n_source_interventions": 60,
+  "n_completed_interventions": 60,
+  "n_completed_examples": 20,
+  "run": {
+    "input_dir": "multiagent_motivation/results/qwen_llama_team_rollout5",
+    "dataset": "causal_locomo_final.jsonl",
+    "config": "multiagent_motivation/config_local.yaml",
+    "same_judge_model": "qwen2.5:14b",
+    "utility_scorer": "hybrid",
+    "rollouts": 5,
+    "rejudged_conditions": [
+      "local_no_memory",
+      "local_with_memory"
+    ],
+    "team_scores_reused_from_input": true,
+    "failures": []
+  }
+}
