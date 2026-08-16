@@ -1,0 +1,21 @@
+seed: 42
+
+openai:
+  provider: ollama
+  base_url: http://127.0.0.1:11434
+  # The worker outputs are already present in the source intervention run.
+  team_model: llama3:8b
+  team_judge_model: qwen2.5:14b
+  embedding_model: nomic-embed-text
+  use_api: true
+  team_temperature: 0.3
+  team_max_output_tokens: 400
+  team_judge_max_output_tokens: 300
+
+scoring:
+  deterministic_weight: 0.5
+  judge_weight: 0.5
+
+experiment:
+  rollouts: 5
+  utility_epsilon: 0.0
