@@ -80,3 +80,29 @@ Synthesizer corrected a locally harmful/noisy worker result. Do not pool these
 directions in the interpretation. With only 20 question clusters, treat a wide
 bootstrap interval crossing zero as inconclusive rather than as evidence that
 local and team utility are equivalent.
+
+## Same-judge validation
+
+The first full run uses the original Llama judge for `U_local` and a Qwen judge
+for `U_team`. To rule out scorer-family differences, rescore only the existing
+local worker answers with the same Qwen judge already used for the team scores.
+The team scores are reused, so this adds about 600 judge calls and no generation.
+
+```bash
+PYTHONPATH=. python multiagent_motivation/rescore_same_judge.py \
+  --input-dir multiagent_motivation/results/qwen_llama_team_rollout5 \
+  --dataset causal_locomo_final.jsonl \
+  --config multiagent_motivation/config_local.yaml \
+  --output-dir multiagent_motivation/results/qwen_llama_team_rollout5_same_judge \
+  --rollouts 5 \
+  --utility-scorer hybrid
+
+PYTHONPATH=. python multiagent_motivation/analyze_team_results.py \
+  --input-dir multiagent_motivation/results/qwen_llama_team_rollout5_same_judge \
+  --output-dir multiagent_motivation/results/qwen_llama_team_rollout5_same_judge/analysis
+```
+
+Compare the new `analysis/summary.json` to the original. Also run a sensitivity
+check with a pre-declared practical utility tolerance, for example
+`--utility-epsilon 0.05`, rather than treating tiny values around zero as robust
+sign changes.

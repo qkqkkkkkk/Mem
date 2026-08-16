@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from multiagent_motivation.analyze_team_results import analyze
+from multiagent_motivation.rescore_same_judge import _stored_team_utility
 from multiagent_motivation.run_team_pilot import _synth_prompt
 
 
@@ -53,3 +54,11 @@ def test_team_analysis_reports_both_mismatch_directions(tmp_path: Path):
     assert summary["contingency_table"]["local_positive_team_positive"] == 1
     assert summary["contingency_table"]["local_nonpositive_team_nonpositive"] == 1
     assert (tmp_path / "analysis" / "mismatch_cases.jsonl").exists()
+
+
+def test_same_judge_rescore_reuses_matching_team_score_arrays():
+    no_scores, with_scores = _stored_team_utility(
+        {"team_no_scores": [0.2, 0.3], "team_with_scores": [0.5, 0.4]}
+    )
+    assert no_scores == [0.2, 0.3]
+    assert with_scores == [0.5, 0.4]
