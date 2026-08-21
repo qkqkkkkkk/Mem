@@ -73,6 +73,17 @@ PYTHONPATH=. python multiagent_motivation/analyze_team_results.py \
   local/team utility correlation, and task-family stratification.
 - `analysis/mismatch_cases.jsonl`: cases for manual inspection.
 
+Generate figures for an existing run (no LLM calls):
+
+```bash
+MPLBACKEND=Agg PYTHONPATH=. python multiagent_motivation/plot_team_results.py \
+  --input-dir multiagent_motivation/results/qwen_llama_team_rollout5_same_judge
+```
+
+This writes `analysis/figures/utility_scatter.png`,
+`analysis/figures/sign_contingency.png`, and
+`analysis/figures/mismatch_by_task_family.png`.
+
 The key go/no-go statistic is `mismatch_rate`. The two directions must be kept
 separate: `local_positive_team_nonpositive` indicates downstream misuse or loss
 of a locally useful memory; `local_nonpositive_team_positive` indicates that the
@@ -106,3 +117,66 @@ Compare the new `analysis/summary.json` to the original. Also run a sensitivity
 check with a pre-declared practical utility tolerance, for example
 `--utility-epsilon 0.05`, rather than treating tiny values around zero as robust
 sign changes.
+
+## R/B/U substitution experiment
+
+`analyze_rbu_substitution.py` turns the already-evaluated interventions into a
+per-question memory-selection experiment. Each selector may choose exactly one
+of the same retrieved candidate memories, so R, B, R+B, and the U oracle have
+the same memory budget. `U_oracle` selects the candidate with the highest
+observed `team_utility`; it is an evaluation upper bound, not a deployable
+method.
+
+Run it on a completed team run without making further LLM calls:
+
+```bash
+PYTHONPATH=. python multiagent_motivation/analyze_rbu_substitution.py \
+  --input-dir multiagent_motivation/results/qwen_llama_team_rollout5_same_judge \
+  --output-dir multiagent_motivation/results/qwen_llama_team_rollout5_same_judge/rbu_analysis
+```
+
+The default definitions are `R=hybrid_relevance`, `B=behavioral_reliance` from
+the worker intervention, and `U=team_utility`. `R+B` normalizes R and B within
+each question before adding them, so neither metric wins merely because of its
+numeric scale. For a stricter downstream version in which B is measured from
+the synthesizer's paired answers, pass:
+
+```bash
+  --b-field team_behavioral_reliance
+```
+
+This uses a derived lexical divergence from the stored `team_with_memory_outputs`
+and `team_no_memory_outputs`; it does not make a new model call.
+
+The primary result is `conditions["R+B"].score_gap_vs_u_oracle` in
+`rbu_summary.json`. A negative estimate whose bootstrap interval remains below
+zero means the R+B selector underperformed observed causal utility under the
+same one-memory budget. Report this alongside `selection_match_rate_to_u_oracle`
+and the ordered errors in `rbu_regret_cases.jsonl`; do not interpret the oracle
+as a train-free deployment baseline.
+
+To test whether the worker's own intervention utility transfers better than R/B
+to the final team outcome, use the same analysis with:
+
+```bash
+  --u-field local_utility
+```
+
+The selector then uses worker-level U, while `mean_team_score` and
+`score_gap_vs_u_oracle` remain downstream team outcomes. State the selected U
+field explicitly in the paper; the output records it under `fields.u`.
+
+Generate motivation-style plots from the R/B/U output:
+
+```bash
+CMI/.venv/bin/python multiagent_motivation/plot_rbu_results.py \
+  --input-dir multiagent_motivation/results/qwen_llama_team_rollout5_same_judge/rbu_analysis \
+  --output-dir multiagent_motivation/results/qwen_llama_team_rollout5_same_judge/rbu_analysis/figures
+```
+
+This writes selector performance, regret versus the U oracle, R/B-versus-U
+scatter plots, positive-versus-negative-U prediction (ROC AUC and average
+precision), and per-question selector scores. The scatter plot uses the
+intervention labels (`useful`, `harmful`, `irrelevant`) as colors, matching the
+motivation-experiment figures. It only reads JSON outputs and does not call a
+model.

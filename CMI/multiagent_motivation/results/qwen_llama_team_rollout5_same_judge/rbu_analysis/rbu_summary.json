@@ -1,0 +1,175 @@
+{
+  "n_interventions": 60,
+  "n_examples": 20,
+  "n_candidates_per_example": {
+    "3": 20
+  },
+  "fields": {
+    "r": "hybrid_relevance",
+    "b": "behavioral_reliance",
+    "u": "team_utility"
+  },
+  "conditions": {
+    "none": {
+      "n_examples": 20,
+      "mean_team_score": 0.29440179171555786,
+      "mean_team_utility": 0.0,
+      "pass_rate": 0.0,
+      "mean_r": null,
+      "mean_b": null,
+      "mean_u": null,
+      "selection_match_rate_to_u_oracle": 0.0,
+      "score_gap_vs_u_oracle": {
+        "estimate": -0.2701821903684242,
+        "lower": -0.37516067797437663,
+        "upper": -0.1737502042501367,
+        "n": 20,
+        "method": "question_bootstrap"
+      },
+      "utility_gap_vs_u_oracle": {
+        "estimate": -0.2701821903684242,
+        "lower": -0.3753098474823827,
+        "upper": -0.1693314814040166,
+        "n": 20,
+        "method": "question_bootstrap"
+      }
+    },
+    "R": {
+      "n_examples": 20,
+      "mean_team_score": 0.4325058552558553,
+      "mean_team_utility": 0.1381040635402974,
+      "pass_rate": 0.2,
+      "mean_r": 0.8069666764999999,
+      "mean_b": 0.9199999999999999,
+      "mean_u": 0.1381040635402974,
+      "selection_match_rate_to_u_oracle": 0.45,
+      "score_gap_vs_u_oracle": {
+        "estimate": -0.13207812682812684,
+        "lower": -0.22601339651339653,
+        "upper": -0.05764285714285714,
+        "n": 20,
+        "method": "question_bootstrap"
+      },
+      "utility_gap_vs_u_oracle": {
+        "estimate": -0.13207812682812684,
+        "lower": -0.22250669825669825,
+        "upper": -0.05798958698958699,
+        "n": 20,
+        "method": "question_bootstrap"
+      }
+    },
+    "B": {
+      "n_examples": 20,
+      "mean_team_score": 0.3037906873687325,
+      "mean_team_utility": 0.009388895653174629,
+      "pass_rate": 0.0,
+      "mean_r": 0.5972932825,
+      "mean_b": 1.0,
+      "mean_u": 0.008939557295384796,
+      "selection_match_rate_to_u_oracle": 0.2,
+      "score_gap_vs_u_oracle": {
+        "estimate": -0.2607932947152496,
+        "lower": -0.3720703989978867,
+        "upper": -0.15320775138497106,
+        "n": 20,
+        "method": "question_bootstrap"
+      },
+      "utility_gap_vs_u_oracle": {
+        "estimate": -0.2607932947152496,
+        "lower": -0.3710517610812635,
+        "upper": -0.15896801630663834,
+        "n": 20,
+        "method": "question_bootstrap"
+      }
+    },
+    "R+B": {
+      "n_examples": 20,
+      "mean_team_score": 0.3782389309003233,
+      "mean_team_utility": 0.08383713918476543,
+      "pass_rate": 0.1,
+      "mean_r": 0.79538348,
+      "mean_b": 0.9949999999999999,
+      "mean_u": 0.08343970328732953,
+      "selection_match_rate_to_u_oracle": 0.3,
+      "score_gap_vs_u_oracle": {
+        "estimate": -0.1863450511836588,
+        "lower": -0.28539390848251606,
+        "upper": -0.09699707138567899,
+        "n": 20,
+        "method": "question_bootstrap"
+      },
+      "utility_gap_vs_u_oracle": {
+        "estimate": -0.1863450511836588,
+        "lower": -0.2910030303030303,
+        "upper": -0.09177439705161225,
+        "n": 20,
+        "method": "question_bootstrap"
+      }
+    },
+    "U_oracle": {
+      "n_examples": 20,
+      "mean_team_score": 0.5645839820839821,
+      "mean_team_utility": 0.2701821903684242,
+      "pass_rate": 0.3,
+      "mean_r": 0.6974936055,
+      "mean_b": 0.9199999999999999,
+      "mean_u": 0.27091739099484036,
+      "selection_match_rate_to_u_oracle": 1.0,
+      "score_gap_vs_u_oracle": {
+        "estimate": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "n": 20,
+        "method": "question_bootstrap"
+      },
+      "utility_gap_vs_u_oracle": {
+        "estimate": 0.0,
+        "lower": 0.0,
+        "upper": 0.0,
+        "n": 20,
+        "method": "question_bootstrap"
+      }
+    },
+    "random": {
+      "n_examples": 20,
+      "mean_team_score": 0.33177277869870025,
+      "mean_team_utility": 0.03737098698314234,
+      "pass_rate": 0.05,
+      "mean_r": 0.72180875,
+      "mean_b": 0.975,
+      "mean_u": 0.03760701268261869,
+      "selection_match_rate_to_u_oracle": 0.2,
+      "score_gap_vs_u_oracle": {
+        "estimate": -0.23281120338528188,
+        "lower": -0.34042123270054875,
+        "upper": -0.14192074674668803,
+        "n": 20,
+        "method": "question_bootstrap"
+      },
+      "utility_gap_vs_u_oracle": {
+        "estimate": -0.23281120338528188,
+        "lower": -0.32791640511516984,
+        "upper": -0.14051839826839826,
+        "n": 20,
+        "method": "question_bootstrap"
+      }
+    }
+  },
+  "correlations": {
+    "pearson_r_u": -0.001935650205819272,
+    "spearman_r_u": 0.09563711500511195,
+    "pearson_b_u": -0.3500138302606467,
+    "spearman_b_u": -0.08239319947130623,
+    "pearson_r_team_utility": -0.001935650205819272,
+    "spearman_r_team_utility": 0.09563711500511195,
+    "pearson_b_team_utility": -0.3500138302606467,
+    "spearman_b_team_utility": -0.08239319947130623,
+    "pearson_u_team_utility": 1.0,
+    "spearman_u_team_utility": 1.0
+  },
+  "interpretation": {
+    "primary_test": "R+B versus U_oracle score_gap_vs_u_oracle and utility_gap_vs_u_oracle",
+    "negative_gap_means": "the proxy selector underperforms the U oracle on the same question",
+    "u_oracle_is": "an upper-bound selector using observed team_utility; it is not available at deployment time"
+  }
+}
